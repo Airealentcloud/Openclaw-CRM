@@ -1,5 +1,35 @@
 # Dashboard
 
+## Overnight Tasks (2026-02-03)
+
+### Active Subagents Running
+| # | Task | Subagent ID | Status |
+|---|------|-------------|--------|
+| 1 | Backlink Outreach (100 emails) | 9558e14a-5081-4064-9230-6507ba020ae5 | In Progress |
+| 2 | YouTube Scripts (3 videos) | 206ac7e4-5934-4534-a85c-ba6d43ab5f5c | In Progress |
+| 3 | Blog Posts for airealent.ng (3 posts) | a82e229c-8f18-4329-b467-71a545102b78 | In Progress |
+| 4 | Spywizards.com SEO Fix | dbfbedfc-6635-4651-a745-efec6b9adccb | In Progress |
+| 5 | Competitor Research (10 sites) | 64e1bd7b-2819-4c44-85da-8eb7584104f9 | In Progress |
+
+### Categories of Work
+
+#### 📊 Content Production
+- [ ] YouTube scripts (target: 3)
+- [ ] Blog posts (target: 3)
+- [ ] TikTok scripts (ready in tiktok-calendar.md)
+
+#### 🔗 SEO & Backlinks
+- [ ] Backlink outreach emails (target: 100)
+- [ ] Competitor analysis (target: 10 sites)
+- [ ] Spywizards.com internal linking fix
+
+#### 📈 Marketing & Research
+- [ ] Competitor research complete
+- [ ] CRM structure updated
+- [ ] 1000 free backlink sources catalogued
+
+---
+
 ## Status
 - Phase 1 (CRM structure): **COMPLETE** ✅ (pipeline, KPIs, owners added)
 - Phase 2 (Backlink research): **COMPLETE** ✅ (contacts found, outreach sent)
