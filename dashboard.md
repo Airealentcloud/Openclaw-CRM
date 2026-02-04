@@ -19,19 +19,20 @@
 | Nigeria Directories Research | ✅ 55 directories identified |
 | 9jaDirectory Credentials | ✅ Saved for future submissions |
 | Property Listing - Wuse Zone | 🔄 IN PROGRESS (4BR Terrace Duplex, ₦480M, 70% complete) |
+| Guest Post Outreach | ✅ 10 emails sent (Round 2 - corrected emails) |
 
 ### 📝 Published SpyWizards Articles
 1. How to Recover a Hacked Instagram Account 2025
 2. Facebook Account Recovery 2025 (2 versions)
-3. Social Media Recovery Services — Scam or Legit? (2 versions)
+3. Social Media Recovery Services - Scam or Legit? (2 versions)
 4. Protecting Social Media Accounts from Hackers (2 versions)
 5. Personal Cybersecurity Checklist 2025 (2 versions)
 6. How to Check if Your Data Has Been Breached (2 versions)
 
 ### 📊 Research Reports
-- `clawdbot-use-cases.md` — 1,000%+ ROI, 10 templates, 12-week plan
-- `spywizards-article-ideas.md` — 35+ SEO topics
-- `nigeria-directories-new.md` — 55 directory targets
+- `clawdbot-use-cases.md` - 1,000%+ ROI, 10 templates, 12-week plan
+- `spywizards-article-ideas.md` - 35+ SEO topics
+- `nigeria-directories-new.md` - 55 directory targets
 
 ---
 
@@ -79,12 +80,11 @@
 
 | Metric | Current | Target | Status |
 |--------|---------|--------|--------|
-| Total Leads | 26 targets | — | Seeded |
-| Contacted | 10 guest posts | — | ✅ Sent 2026-02-02 |
-| Pending Response | 10 | — | Awaiting |
-| Conversion Rate | 0% | 15% | In progress |
+| Total Leads | 36 targets | - | Seeded |
+| Guest Post Emails | 10 sent (Round 2) | 15 | 67% ✅ |
 | Directory Submissions | 16 | 20 | 80% |
-| Guest Post Outreach | 10 | 15 | 67% |
+| Conversion Rate | 0% | 15% | In progress |
+| Responses Awaiting | - | - | Check email |
 
 ## Revenue Targets
 - airealent.ng: 5 directory + 5 guest posts → Est. 10 quality backlinks
@@ -93,21 +93,24 @@
 - mynigeriabusiness.ng: 3 directory + 1 guest post → Est. 4 backlinks
 - 9jadirectory.org: 5 directory listings → Est. 5 backlinks
 
-## What’s Done ✅
+## What's Done ✅
 - TikTok 30-day calendar drafted (Feb 1–Mar 1)
 - YouTube February plan drafted (8–12 videos + shorts)
-- Backlink target list seeded (26 targets: 16 directories, 10 guest posts)
+- Backlink target list seeded (36 targets: 16 directories, 20 guest post)
 - Backlink outreach plan + templates drafted
-- **Contact discovery completed** - 10 guest post contacts added to tracker
-- **First outreach batch sent** - 10 emails dispatched (Feb 2, 2026)
+- **Guest post outreach SENT** - 10 emails (Feb 4, 2026)
+  - Nairametrics, BusinessDay NG, Techpoint Africa, Thisdaylive
+  - TechCabal, Homers Nigeria, NaijaTechGuide
+  - The Africanvestor, Caroline Wabara
 
 ## Pending
-- ~~Expand CRM structure (pipeline stages, owner, KPI snapshot)~~ ✅ DONE
-- ~~Backlink outreach: find contacts/emails, add to tracker, send first batch~~ ✅ DONE
-- TikTok account-based research (need handle(s) to analyze)
-- YouTube ideas refinement (ready for scripts/calendar if desired)
-- **Re-create 6:30 AM Telegram delivery cron job** (requires admin - see below)
-- Follow-up on pending outreach responses (due 2026-02-08)
+- ~~Expand CRM structure~~ ✅ DONE
+- ~~Backlink outreach: find contacts/emails, send emails~~ ✅ DONE
+- ~~SpyWizards SEO metadata fix~~ ✅ DONE
+- **SpyWizards Internal Linking** 🔄 IN PROGRESS
+- **airealent.ng Property Listings** 🔄 IN PROGRESS (4BR Terrace Duplex - images pending upload)
+- **Await guest post responses** 📬 Check email (follow-up Feb 8-10)
+- Re-create 6:30 AM Telegram delivery cron job
 
 ## 6:30 AM Cron Job - Manual Setup Required
 The scheduled task "Daily Telegram Delivery" was not found in the system. To recreate:
@@ -124,11 +127,10 @@ Or use Task Scheduler GUI:
 4. Action: Start a program → python "C:\Users\USER\.openclaw\workspace\crm\_update_backlinks.py"
 
 ## Latest Updates
+- **Feb 4:** Guest post outreach SENT - 10 emails to Nairametrics, BusinessDay NG, Techpoint Africa, Thisdaylive, TechCabal, Homers Nigeria, NaijaTechGuide, The Africanvestor, Caroline Wabara
 - **Feb 4:** SpyWizards SEO complete - 100 posts with meta titles/descriptions, sitemaps generated, schema markup ready
-- **Feb 4:** Internal linking IN PROGRESS - adding 3-5 contextual links per post via WordPress API
-- TikTok: 30-day Abuja real-estate plan created (hooks + formats + CTA) and 10 Lagos patterns adapted for Abuja (price hooks, POV tours, budget breakdowns, myth-busting, map commute).
-- YouTube: 10 Abuja real-estate video ideas with SEO titles + hooks ready for scripting.
-- Backlinks: **OUTREACH COMPLETE** - 10 guest post contacts identified and emails sent. Follow-up due Feb 8, 2026.
+- **Feb 4:** Internal linking IN PROGRESS - adding 3-5 contextual links per post
+- **Awaiting responses** - Check email for replies (follow-up Feb 8-10)
 
 ## Priorities
 1) ~~Expand CRM scaffolding~~ ✅ DONE
