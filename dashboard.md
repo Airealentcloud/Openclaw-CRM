@@ -14,8 +14,8 @@
 | Clawdbot Use Cases Research | ✅ Full report |
 | Nigeria Directories Research | ✅ 55 directories identified |
 | Guest Post Outreach | ✅ 10 emails sent (Round 2) |
-| airealent.ng Property - WUSE Zone 723sqm Land | 🔄 DRAFT (Property #18871 created, needs manual upload) |
-| airealent.ng Property - KATAMPE 6BR Duplex + 1BQ | 📋 QUEUED (11 images received, text prepared) |
+| airealent.ng Property - WUSE Zone 723sqm Land | ⏸️ BLOCKED (Browser automation down - needs manual creation) |
+| airealent.ng Property - KATAMPE 6BR Duplex + 1BQ | 📋 QUEUED (11 images received, text prepared, awaiting manual upload) |
 
 ---
 
@@ -24,7 +24,7 @@
 | Task | Status | Notes |
 |------|--------|-------|
 | SpyWizards Internal Linking | 🔄 IN PROGRESS | 100 posts, 3-5 links each |
-| airealent.ng Property Listings | 🔄 IN PROGRESS | 2 listings: WUSE Land #18871, KATAMPE 6BR Duplex queued |
+| airealent.ng Property Listings | 🔄 IN PROGRESS | 1 queued (KATAMPE 6BR Duplex); WUSE Land needs manual creation |
 
 ---
 
@@ -33,7 +33,7 @@
 - **Articles Published:** 11 ✅
 - **Directories Found:** 55
 - **Backlinks Sent:** 117
-- **Property Listings:** 2 (1 draft, 1 queued)
+- **Property Listings:** 1 queued, 1 blocked (browser automation down)
 
 ---
 
@@ -50,15 +50,10 @@
 
 ## 🏠 Property Listings
 
-### Property #1: WUSE Zone Land (DRAFT)
-- **ID:** 18871
-- **Title:** [723 Sqm] Residential Land for Sale in Wuse Zone - ₦750M
-- **Type:** Land
-- **Location:** Wuse Zone, Abuja
-- **Size:** 723 sqm
-- **Price:** ₦750,000,000
-- **Status:** Draft (needs: type check, features, images, publish)
-- **Edit URL:** https://airealent.ng/wp-admin/post.php?post=18871&action=edit
+### Property #1: WUSE Zone Land (BLOCKED - NOT CREATED)
+- **Details:** 723 Sqm, Wuse Zone, ₦750M
+- **Status:** ⏸️ Browser automation down - needs manual creation
+- **Data prepared:** Yes, ready to copy/paste
 
 ### Property #2: KATAMPE Extension 6BR Duplex (QUEUED)
 - **Type:** Detached Duplex + 1BR BQ
@@ -72,13 +67,12 @@
 ---
 
 ## Latest Updates
-- **Feb 5:** Browser automation down (gateway issues)
-- **Feb 5:** WUSE Land property #18871 created as draft
+- **Feb 5:** Browser automation down (gateway issues) - property creation blocked
 - **Feb 5:** KATAMPE 6BR Duplex listing data prepared (11 images received)
-- **Awaiting:** Manual upload of images and publish for both listings
+- **Awaiting:** Manual creation of WUSE Land listing; manual upload for KATAMPE
 
 ## Priorities
-1. ✅ SpyWizards Internal Linking (in progress)
-2. ✅ WUSE Zone Land - text complete (needs manual image upload)
-3. ✅ KATAMPE 6BR Duplex - data prepared (needs manual upload)
+1. SpyWizards Internal Linking (in progress)
+2. WUSE Zone Land - data prepared (needs manual creation)
+3. KATAMPE 6BR Duplex - data prepared (needs manual upload)
 4. Re-create 6:30 AM Telegram delivery cron job
