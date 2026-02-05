@@ -14,8 +14,9 @@
 | Clawdbot Use Cases Research | ✅ Full report |
 | Nigeria Directories Research | ✅ 55 directories identified |
 | Guest Post Outreach | ✅ 10 emails sent (Round 2) |
-| airealent.ng Property - WUSE Zone 723sqm Land | ⏸️ BLOCKED (Browser automation down - needs manual creation) |
-| airealent.ng Property - KATAMPE 6BR Duplex + 1BQ | 📋 QUEUED (11 images received, text prepared, awaiting manual upload) |
+| airealent.ng Property - WUSE Zone 723sqm Land | ⏸️ BLOCKED (needs manual creation) |
+| airealent.ng Property - Minister Quarters 4BR Terrace | ⚠️ SUBAGENT ABORTED (not created - data prepared, needs manual) |
+| airealent.ng Property - KATAMPE 6BR Duplex + 1BQ | 📋 QUEUED (11 images received, text prepared) |
 
 ---
 
@@ -24,7 +25,7 @@
 | Task | Status | Notes |
 |------|--------|-------|
 | SpyWizards Internal Linking | 🔄 IN PROGRESS | 100 posts, 3-5 links each |
-| airealent.ng Property Listings | 🔄 IN PROGRESS | 1 queued (KATAMPE 6BR Duplex); WUSE Land needs manual creation |
+| airealent.ng Property Listings | 🔄 IN PROGRESS | 1 queued; Minister Quarters (subagent aborted); WUSE Land needs manual |
 
 ---
 
@@ -33,7 +34,7 @@
 - **Articles Published:** 11 ✅
 - **Directories Found:** 55
 - **Backlinks Sent:** 117
-- **Property Listings:** 1 queued, 1 blocked (browser automation down)
+- **Property Listings:** 1 queued, 2 blocked/aborted
 
 ---
 
@@ -55,7 +56,20 @@
 - **Status:** ⏸️ Browser automation down - needs manual creation
 - **Data prepared:** Yes, ready to copy/paste
 
-### Property #2: KATAMPE Extension 6BR Duplex (QUEUED)
+### Property #2: Minister Quarters 4BR Terrace (SUBAGENT ABORTED - NOT CREATED)
+- **Title:** Spacious 4 Bedroom Terrace Duplex with 1 Room BQ
+- **Location:** Minister Quarters, Abuja
+- **Price:** ₦850M (Semi Finished) / ₦950M (Fully Finished)
+- **Bedrooms:** 4 | **Bathrooms:** 4 (all en-suite)
+- **Type:** Terrace Duplex | **Status:** For Sale
+- **Features:** Ante Room, Guest Toilet, Dining Area, En-suite, Walk-in Closet, Balcony, Green Area, Swimming Pool, Ample Parking, Spacious Kitchen
+- **Images:** 8 images prepared in media/inbound folder
+- **SEO:** Title, description, slug, focus keyword configured
+- **Status:** ⚠️ SUBAGENT ABORTED - NOT CREATED
+- **Script ready:** `crm/create-minister-quarters-property.js` (needs WP password to run)
+- **Manual create:** https://airealent.ng/wp-admin/post-new.php?post_type=property
+
+### Property #3: KATAMPE Extension 6BR Duplex (QUEUED)
 - **Type:** Detached Duplex + 1BR BQ
 - **Location:** Katampe Extension, Abuja
 - **Price:** ₦1,500,000,000
