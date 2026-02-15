@@ -4,7 +4,7 @@ Columns: Site, URL, Contact Name, Email, Category (guest post / directory / reso
 
 | # | Site | URL | Contact | Email | Category | Target Site | Anchor | Target Page | Status | Follow-up | Template |
 |---|------|-----|---------|-------|----------|-------------|--------|-------------|--------|-----------|----------|
-| 1 | PropertyPro Nigeria | https://www.propertypro.ng/advertise | — | — | Directory/Listing | airealent.ng | Abuja luxury properties | Homepage | pending | — | Directory submission |
+| 1 | PropertyPro Nigeria | https://www.propertypro.ng/advertise | Customer Care | customercare@propertypro.ng | Directory/Listing | airealent.ng | Abuja luxury properties | Homepage | email_found | 2026-02-14 | Directory submission |
 | 2 | Nigeria Property Centre | https://nigeriapropertycentre.com/advertise-property | — | — | Directory/Listing | airealent.ng | Abuja verified listings | /properties | pending | — | Directory submission |
 | 3 | PrivateProperty Nigeria | https://www.privateproperty.com.ng/list-your-property | — | — | Directory/Listing | housesforsaleinabuja.com | Houses for sale Abuja | /houses-for-sale-in-maitama | pending | — | Directory submission |
 | 4 | Jiji Real Estate | https://jiji.ng/real-estate | — | — | Directory/Listing | housesforsaleinabuja.com | Buy house in Asokoro | /houses-for-sale-in-asokoro | pending | — | Directory submission |
@@ -138,20 +138,20 @@ Columns: Site, URL, Contact Name, Email, Category (guest post / directory / reso
 | 132 | Caroline Wabara | https://carolinewabara.com/write-for-us/ | — | contact page | Guest Post | airealent.ng | Abuja property business | /property-for-sale/house/in/abuja/ | pending | — | Guest post pitch |
 | 133 | NaijaGoDigital | https://www.naijagodigital.com/write-for-us/ | — | contact page | Guest Post | airealent.ng | Real estate marketing Abuja | /property-for-sale/house/in/abuja/ | pending | — | Guest post pitch |
 | 134 | Naija Online Biz | https://www.naijaonlinebiz.com/guest-post | — | contact page | Guest Post | airealent.ng | Abuja property guide | /property-for-sale/house/in/abuja/ | pending | — | Guest post pitch |
-| 135 | Nigeria Business Pro | https://nigeriabusinesspro.com/write-for-us-guest-post | — | contact page | Guest Post | airealent.ng | Abuja property investment | /property-for-sale/house/in/katampe-abuja/ | pending | — | Guest post pitch |
-| 136 | ConsultEase | https://consultease.com/write-for-us | — | contact page | Guest Post | airealent.ng | Abuja real estate | /property-for-sale/house/in/katampe-abuja/ | pending | — | Guest post pitch |
+| 135 | Nigeria Business Pro | https://nigeriabusinesspro.com/write-for-us-guest-post | Editorial | editor@nigeriabusinesspro.com | Guest Post | airealent.ng | Abuja property investment | /property-for-sale/house/in/katampe-abuja/ | email_found | 2026-02-15 | Guest post pitch |
+| 136 | ConsultEase | https://consultease.com/write-for-us | Editorial | info@consultease.com | Guest Post | airealent.ng | Abuja real estate | /property-for-sale/house/in/katampe-abuja/ | email_found | 2026-02-15 | Guest post pitch |
 | 137 | Business Today NG | https://businesstoday-ng.com/ | — | contact page | Guest Post | airealent.ng | Abuja housing market | /property-for-sale/house/in/katampe-abuja/ | pending | — | Guest post pitch |
 | 138 | Troloppe Property Services | https://troloppe.com/insights | — | contact page | Guest Post | airealent.ng | Abuja property insights | /property-for-sale/house/in/jahi-abuja/ | pending | — | Guest post pitch |
 | 139 | Nigeria Real Estate Blog | https://nigeriarealestateblog.com | — | contact page | Guest Post | airealent.ng | Houses for sale in Abuja | /property-for-sale/house/in/abuja/ | pending | — | Guest post pitch |
 | 140 | BusinessDay NG (Real Estate) | https://businessday.ng/real-estate | — | contact page | Guest Post | airealent.ng | Abuja housing market | /property-for-sale/house/in/abuja/ | pending | — | Guest post pitch |
-| 141 | Nairametrics | https://nairametrics.com | — | contact page | Guest Post | airealent.ng | Abuja property investment | /property-for-sale/house/in/maitama-abuja/ | pending | — | Guest post pitch |
-| 142 | Thisdaylive | https://www.thisdaylive.com | — | contact page | Guest Post | airealent.ng | Abuja real estate trends | /property-for-sale/house/in/asokoro-abuja/ | pending | — | Guest post pitch |
+| 141 | Nairametrics | https://nairametrics.com | Editorial Team | outreach@nairametrics.com | Guest Post | airealent.ng | Abuja property investment | /property-for-sale/house/in/maitama-abuja/ | email_found | 2026-02-14 | Guest post pitch |
+| 142 | Thisdaylive | https://www.thisdaylive.com | Editorial Team | hello@thisdaylive.com | Guest Post | airealent.ng | Abuja real estate trends | /property-for-sale/house/in/asokoro-abuja/ | email_found | 2026-02-14 | Guest post pitch |
 | 143 | The Africanvestor | https://theafricanvestor.com | — | contact page | Guest Post | airealent.ng | Abuja property investment | /property-for-sale/house/in/maitama-abuja/ | pending | — | Guest post pitch |
-| 144 | Techpoint Africa | https://techpoint.africa | — | contact page | Guest Post | airealent.ng | PropTech in Abuja | /property-for-sale/house/in/abuja/ | pending | — | Guest post pitch |
-| 145 | TechCabal | https://techcabal.com | — | contact page | Guest Post | airealent.ng | PropTech in Abuja | /property-for-sale/house/in/abuja/ | pending | — | Guest post pitch |
+| 144 | Techpoint Africa | https://techpoint.africa | Business Team | business@techpoint.africa | Guest Post | airealent.ng | PropTech in Abuja | /property-for-sale/house/in/abuja/ | email_found | 2026-02-14 | Guest post pitch |
+| 145 | TechCabal | https://techcabal.com | Editorial Team | editor@techcabal.com | Guest Post | airealent.ng | PropTech in Abuja | /property-for-sale/house/in/abuja/ | email_found | 2026-02-14 | Guest post pitch |
 | 146 | NaijaTechGuide | https://naijatechguide.com | — | contact page | Guest Post | airealent.ng | PropTech in Abuja | /property-for-sale/house/in/abuja/ | pending | — | Guest post pitch |
 | 147 | SquirrelPR Nigeria | https://www.squirrelpr.com | — | contact page | Guest Post | airealent.ng | Abuja property PR | /property-for-sale/house/in/abuja/ | pending | — | Guest post pitch |
-| 148 | Money Visual | https://moneyvisual.com/write-for-us | — | contact page | Guest Post | airealent.ng | Abuja property investment | /property-for-sale/house/in/guzape-abuja/ | pending | — | Guest post pitch |
+| 148 | Money Visual | https://moneyvisual.com/write-for-us | Editorial | themoneyvisual@gmail.com | Guest Post | airealent.ng | Abuja property investment | /property-for-sale/house/in/guzape-abuja/ | email_found | 2026-02-15 | Guest post pitch |
 | 149 | Total Entrepreneurs | https://thetotalentrepreneurs.com/write-for-us | — | contact page | Guest Post | airealent.ng | Abuja property business | /property-for-sale/house/in/jahi-abuja/ | pending | — | Guest post pitch |
 | 150 | DALTX Real Estate | https://daltxrealestate.com/guest-post/ | — | contact form | Guest Post | airealent.ng | Houses for sale in Abuja | /property-for-sale/house/in/abuja/ | pending | — | Guest post pitch |
 | 151 | Propaura | https://propaura.com/write-for-us/ | — | contact form | Guest Post | airealent.ng | Abuja real estate guide | /property-for-sale/house/in/abuja/ | pending | — | Guest post pitch |
