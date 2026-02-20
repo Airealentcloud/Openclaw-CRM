@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CRM Mission Control</title>
+  <style>
+    :root {
+      --bg: #0b0b0b;
+      --panel: #121212;
+      --panel-2: #171717;
+      --border: #262626;
+      --text: #f5f5f5;
+      --muted: #b5b5b5;
+      --gold: #d4af37;
+      --accent: #1f1f1f;
+      --green: #35c759;
+      --orange: #ff9f0a;
+      --blue: #0a84ff;
+      --red: #ff453a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    a { color: var(--gold); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .layout { display: grid; grid-template-columns: 260px 1fr; min-height: 100vh; }
+    .sidebar {
+      position: sticky; top: 0; height: 100vh;
+      background: #0f0f0f; border-right: 1px solid var(--border);
+      padding: 20px 16px; overflow-y: auto;
+    }
+    .brand { font-weight: 700; color: var(--gold); font-size: 16px; margin-bottom: 12px; }
+    .nav h4 { margin: 18px 0 8px; color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; }
+    .nav a, .nav button {
+      display: block; width: 100%; text-align: left;
+      background: var(--panel); color: var(--gold);
+      border: 1px solid var(--border); border-radius: 10px;
+      padding: 10px 12px; font-size: 12px; margin-bottom: 8px; cursor: pointer;
+    }
+    .nav a:hover, .nav button:hover { background: var(--panel-2); }
+
+    .content { padding: 24px; }
+    .header { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+    .header h1 { margin: 0; font-size: 22px; color: var(--gold); }
+    .sub { color: var(--muted); font-size: 12px; }
+
+    .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 18px 0 24px; }
+    .card {
+      background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 16px;
+    }
+    .card h3 { margin: 0 0 6px; font-size: 14px; color: var(--muted); }
+    .card .value { font-size: 28px; font-weight: 700; color: var(--gold); }
+    .pill { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 10px; margin-left: 6px; }
+    .pill.green { background: #173a24; color: var(--green); }
+    .pill.orange { background: #3a260a; color: var(--orange); }
+    .pill.blue { background: #0b2347; color: var(--blue); }
+
+    .tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .tile {
+      background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 16px;
+      min-height: 120px; display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .tile h2 { margin: 0 0 6px; font-size: 16px; color: var(--gold); }
+    .tile p { margin: 0; color: var(--muted); font-size: 12px; }
+    .tile .actions { margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap; }
+    .btn { background: var(--accent); border: 1px solid var(--border); color: var(--gold); padding: 6px 10px; border-radius: 8px; font-size: 11px; }
+    .btn:hover { background: var(--panel-2); }
+
+    .section { margin-top: 28px; }
+    .section h2 { margin: 0 0 12px; font-size: 16px; color: var(--gold); }
+    .table-wrap { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+    table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    th, td { border-bottom: 1px solid var(--border); padding: 10px; text-align: left; }
+    th { background: #151515; color: var(--gold); position: sticky; top: 0; }
+    tr:hover { background: #141414; }
+
+    .scroll { max-height: 420px; overflow: auto; }
+
+    @media (max-width: 1200px) {
+      .grid, .tiles { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 800px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { position: static; height: auto; }
+      .grid, .tiles { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand">🛰️ Mission Control</div>
+      <div class="nav">
+        <h4>Quick</h4>
+        <a href="#overview">Overview</a>
+        <a href="#backlinks">Backlink Outreach</a>
+        <a href="#content">Content (TikTok/YouTube)</a>
+        <a href="#tasks">Today’s Priorities</a>
+        <h4>Filters</h4>
+        <button onclick="filterTable('all')">All</button>
+        <button onclick="filterTable('pending')">Pending</button>
+        <button onclick="filterTable('email_found')">Email‑Ready</button>
+        <button onclick="filterTable('outreach_sent')">Outreach Sent</button>
+        <button onclick="filterTable('form_submitted')">Form Submitted</button>
+      </div>
+    </aside>
+
+    <main class="content">
+      <div class="header" id="overview">
+        <h1>CRM Mission Control</h1>
+        <div class="sub">A.I Realent • Last updated: 2026‑02‑14</div>
+      </div>
+
+      <div class="grid">
+        <div class="card"><h3>Total Sites</h3><div class="value">226</div></div>
+        <div class="card"><h3>Pending Outreach</h3><div class="value">111 <span class="pill orange">Action</span></div></div>
+        <div class="card"><h3>Outreach Sent</h3><div class="value">109 <span class="pill blue">Follow‑up</span></div></div>
+        <div class="card"><h3>Email‑Ready</h3><div class="value">32 <span class="pill green">Send</span></div></div>
+      </div>
+
+      <div class="tiles">
+        <div class="tile">
+          <div>
+            <h2>Backlink Outreach</h2>
+            <p>Email‑ready list + contact forms. Track status and follow‑ups.</p>
+          </div>
+          <div class="actions">
+            <a class="btn" href="#backlinks">Open tracker</a>
+            <a class="btn" href="backlink-outreach-tracker.md">Raw sheet</a>
+          </div>
+        </div>
+        <div class="tile">
+          <div>
+            <h2>TikTok Calendar</h2>
+            <p>Daily hooks, scripts, and CTAs for Abuja property content.</p>
+          </div>
+          <div class="actions">
+            <a class="btn" href="tiktok-calendar.md">Open plan</a>
+          </div>
+        </div>
+        <div class="tile">
+          <div>
+            <h2>YouTube Calendar</h2>
+            <p>Weekly long‑form + shorts strategy and SEO titles.</p>
+          </div>
+          <div class="actions">
+            <a class="btn" href="youtube-calendar.md">Open plan</a>
+          </div>
+        </div>
+        <div class="tile">
+          <div>
+            <h2>Content Queue</h2>
+            <p>What to record today + scripts to write next.</p>
+          </div>
+          <div class="actions">
+            <a class="btn" href="#tasks">View queue</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" id="tasks">
+        <h2>Today’s Priorities</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Priority</th><th>Task</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>1</td><td>Send outreach to 10 email‑ready contacts</td><td><span class="pill orange">In progress</span></td></tr>
+              <tr><td>2</td><td>Write TikTok scripts (Week 1)</td><td><span class="pill blue">Queued</span></td></tr>
+              <tr><td>3</td><td>Draft YouTube script (Week 1 video)</td><td><span class="pill blue">Queued</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="section" id="backlinks">
+        <h2>Backlink Outreach Tracker</h2>
+        <div class="table-wrap scroll">
+          <table id="backlinkTable">
+            <thead>
+              <tr>
+                <th>#</th><th>Site</th><th>URL</th><th>Contact</th><th>Email</th><th>Status</th><th>Category</th><th>Target</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>PropertyPro Nigeria</td><td><a href="https://www.propertypro.ng/advertise" target="_blank">link</a></td><td>Customer Care</td><td>customercare@propertypro.ng</td><td><span class="pill status-pending">email_found</span></td><td>Directory/Listing</td><td>airealent.ng</td></tr>
+<tr><td>2</td><td>Nigeria Property Centre</td><td><a href="https://nigeriapropertycentre.com/advertise-property" target="_blank">link</a></td><td>—</td><td>—</td><td><span class="pill status-pending">pending</span></td><td>Directory/Listing</td><td>airealent.ng</td></tr>
+<tr><td>3</td><td>PrivateProperty Nigeria</td><td><a href="https://www.privateproperty.com.ng/list-your-property" target="_blank">link</a></td><td>—</td><td>—</td><td><span class="pill status-pending">pending</span></td><td>Directory/Listing</td><td>housesforsaleinabuja.com</td></tr>
+<tr><td>4</td><td>Jiji Real Estate</td><td><a href="https://jiji.ng/real-estate" target="_blank">link</a></td><td>—</td><td>—</td><td><span class="pill status-pending">pending</span></td><td>Directory/Listing</td><td>housesforsaleinabuja.com</td></tr>
+<tr><td>5</td><td>OList Real Estate</td><td><a href="https://olist.ng/real-estate" target="_blank">link</a></td><td>—</td><td>—</td><td><span class="pill status-pending">pending</span></td><td>Directory/Listing</td><td>landforsaleinabuja.com</td></tr>
+<tr><td>6</td><td>Finelib Real Estate Category</td><td><a href="https://www.finelib.com/real-estate" target="_blank">link</a></td><td>—</td><td>—</td><td><span class="pill status-pending">pending</span></td><td>Directory</td><td>airealent.ng</td></tr>
+<tr><td>7</td><td>BusinessList Nigeria</td><td><a href="https://www.businesslist.com.ng/real-estate" target="_blank">link</a></td><td>—</td><td>—</td><td><span class="pill status-pending">pending</span></td><td>Directory</td><td>mynigeriabusiness.ng</td></tr>
+<tr><td>8</td><td>NgEX Business</td><td><a href="https://www.ngex.com/bd/" target="_blank">link</a></td><td>—</td><td>—</td><td><span class="pill status-pending">pending</span></td><td>Directory</td><td>9jadirectory.org</td></tr>
+<tr><td>9</td><td>ConnectNigeria Business</td><td><a href="https://www.connectnigeria.com/biz/directory" target="_blank">link</a></td><td>—</td><td>—</td><td><span class="pill status-pending">pending</span></td><td>Directory</td><td>mynigeriabusiness.ng</td></tr>
+<tr><td>10</td><td>Guardian Nigeria Property</td><td><a href="https://guardian.ng/category/property/" target="_blank">link</a></td><td>Editorial Team</td><td>contact@guardian.ng</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post/Feature</td><td>airealent.ng</td></tr>
+<tr><td>11</td><td>Punch NG Real Estate</td><td><a href="https://punchng.com/topics/property/" target="_blank">link</a></td><td>Editorial</td><td>punchng@punchng.com</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post/Feature</td><td>housesforsaleinabuja.com</td></tr>
+<tr><td>12</td><td>Vanguard Real Estate</td><td><a href="https://www.vanguardngr.com/category/business/real-estate/" target="_blank">link</a></td><td>News Desk</td><td>citizenreport@vanguardngr.com</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post/Feature</td><td>landforsaleinabuja.com</td></tr>
+<tr><td>13</td><td>Tribune Property</td><td><a href="https://tribuneonlineng.com/category/property/" target="_blank">link</a></td><td>Online Editor</td><td>onlineeditor@tribuneonlineng.com</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post/Feature</td><td>airealent.ng</td></tr>
+<tr><td>14</td><td>Nairaland Real Estate Forum</td><td><a href="https://www.nairaland.com/real-estate" target="_blank">link</a></td><td>Moderators</td><td>admin@nairaland.com</td><td><span class="pill status-pending">pending</span></td><td>Forum/Resource</td><td>housesforsaleinabuja.com</td></tr>
+<tr><td>15</td><td>Property Insider (NG)</td><td><a href="https://propertyinsider.com.ng/" target="_blank">link</a></td><td>Editorial</td><td>info@propertyinsider.com.ng</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post/Feature</td><td>airealent.ng</td></tr>
+<tr><td>16</td><td>Legit.ng Business/Real Estate</td><td><a href="https://www.legit.ng/business-economy/" target="_blank">link</a></td><td>Editorial</td><td>editorial@legit.ng</td><td><span class="pill status-sent">outreach_sent</span></td><td>Feature/Guest</td><td>mynigeriabusiness.ng</td></tr>
+<tr><td>17</td><td>TechEconomy Real Estate</td><td><a href="https://techeconomy.ng/category/real-estate/" target="_blank">link</a></td><td>Editorial</td><td>editor@techeconomy.ng</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>18</td><td>BusinessDay Property</td><td><a href="https://businessday.ng/real-estate/" target="_blank">link</a></td><td>Property Editor</td><td>chukaurok_o@businessday.ng</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post/Feature</td><td>landforsaleinabuja.com</td></tr>
+<tr><td>19</td><td>Blueprint.ng Property</td><td><a href="https://blueprint.ng/category/property/" target="_blank">link</a></td><td>Editorial</td><td>editorial@blueprint.ng</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>housesforsaleinabuja.com</td></tr>
+<tr><td>20</td><td>TheCable Real Estate</td><td><a href="https://www.thecable.ng/tag/real-estate" target="_blank">link</a></td><td>News Desk</td><td>news@thecable.ng</td><td><span class="pill status-sent">outreach_sent</span></td><td>Feature</td><td>airealent.ng</td></tr>
+<tr><td>21</td><td>VConnect Promote Your Business</td><td><a href="https://m.vconnect.com/promoteyourbusiness" target="_blank">link</a></td><td>—</td><td>—</td><td><span class="pill status-pending">pending</span></td><td>Directory</td><td>9jadirectory.org</td></tr>
+<tr><td>22</td><td>NigeriaGalleria Directory</td><td><a href="https://www.nigeriagalleria.com/directory/create-listing/" target="_blank">link</a></td><td>—</td><td>—</td><td><span class="pill status-pending">pending</span></td><td>Directory</td><td>airealent.ng</td></tr>
+<tr><td>23</td><td>NGContacts Business Directory</td><td><a href="https://www.ngcontacts.com/" target="_blank">link</a></td><td>—</td><td>—</td><td><span class="pill status-pending">pending</span></td><td>Directory</td><td>9jadirectory.org</td></tr>
+<tr><td>24</td><td>Yellow Pages Nigeria</td><td><a href="https://yellowpagesnigeria.com/" target="_blank">link</a></td><td>—</td><td>—</td><td><span class="pill status-pending">pending</span></td><td>Directory</td><td>housesforsaleinabuja.com</td></tr>
+<tr><td>25</td><td>Nigeria Yellow Pages Online</td><td><a href="https://nigeriayponline.com/" target="_blank">link</a></td><td>—</td><td>—</td><td><span class="pill status-pending">pending</span></td><td>Directory</td><td>landforsaleinabuja.com</td></tr>
+<tr><td>26</td><td>Country Yellow Pages</td><td><a href="https://www.countryyellowpages.net/" target="_blank">link</a></td><td>—</td><td>—</td><td><span class="pill status-pending">pending</span></td><td>Directory</td><td>airealent.ng</td></tr>
+<tr><td>27</td><td>DALTX Real Estate</td><td><a href="https://daltxrealestate.com/guest-post/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-form">form_submitted</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>28</td><td>Propaura</td><td><a href="https://propaura.com/write-for-us/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>29</td><td>MarkMeets Property</td><td><a href="https://markmeets.com/property/write-for-us-real-estate-guest-post/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>housesforsaleinabuja.com</td></tr>
+<tr><td>30</td><td>SEO Sandwitch Real Estate</td><td><a href="https://seosandwitch.com/write-for-us-real-estate-guest-post/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>landforsaleinabuja.com</td></tr>
+<tr><td>31</td><td>All Around Moving</td><td><a href="https://www.allaroundmoving.com/write-for-us/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>32</td><td>The Global Hues</td><td><a href="https://theglobalhues.com/guest-posting-website-for-real-estate/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>housesforsaleinabuja.com</td></tr>
+<tr><td>33</td><td>KS Realty Agent</td><td><a href="https://ksrealtyagent.com/write-for-us-real-estate/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>34</td><td>Estate Mate</td><td><a href="https://estatematee.com/write-for-us-real-estate-guest-blogging-opportunity/" target="_blank">link</a></td><td>Hassan</td><td>hassan@haashes.com</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>landforsaleinabuja.com</td></tr>
+<tr><td>35</td><td>Ron Parpara Real Estate</td><td><a href="https://www.ronparpara.com/guest-post-guidelines" target="_blank">link</a></td><td>Editor</td><td>editor.ronparpara@gmail.com</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>36</td><td>Link Publishers Real Estate</td><td><a href="https://linkpublishers.com/blog/real-estate-write-for-us/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>housesforsaleinabuja.com</td></tr>
+<tr><td>37</td><td>ELIKA New York</td><td><a href="https://www.elikarealestate.com/blog/real-estate-writing/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>38</td><td>Estate Skyline</td><td><a href="https://estateskyline.co/blog/write-for-us/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>landforsaleinabuja.com</td></tr>
+<tr><td>39</td><td>SKN Real Estate</td><td><a href="https://sknrealestate.com/write-for-us/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>40</td><td>Nicolai Real Estate</td><td><a href="https://nicolairealestate.com/blogs/write-for-us-sponsored-posts/" target="_blank">link</a></td><td>—</td><td>netherlandsmark@proton.me</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>housesforsaleinabuja.com</td></tr>
+<tr><td>41</td><td>CCIM Institute</td><td><a href="https://www.ccim.com/real-estate-insights/commercial-connections-magazine/write-us" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>42</td><td>AgentAdvice</td><td><a href="https://www.agentadvice.com/blog/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>housesforsaleinabuja.com</td></tr>
+<tr><td>43</td><td>Real Estate Agent</td><td><a href="https://www.realestateagent.com/real-estate-blogger.html" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>44</td><td>GeekEstate Blog</td><td><a href="https://geekestateblog.com/contribute/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>45</td><td>ActiveRain</td><td><a href="https://www.activerain.com/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>housesforsaleinabuja.com</td></tr>
+<tr><td>46</td><td>The Close</td><td><a href="https://theclose.com/real-estate-blogs/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>47</td><td>Developer Gang Real Estate</td><td><a href="https://developergang.com/write-for-us-real-estate-blogs" target="_blank">link</a></td><td>—</td><td>developergaang1@gmail.com</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>landforsaleinabuja.com</td></tr>
+<tr><td>48</td><td>Links Management Real Estate</td><td><a href="https://www.linksmanagement.com/real-estate-write-for-us/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>49</td><td>GuestBlogging.Pro</td><td><a href="https://www.guestblogging.pro/write-for-us-real-estate/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>housesforsaleinabuja.com</td></tr>
+<tr><td>50</td><td>Pierre Carapetian Group</td><td><a href="https://pierrecarapetian.com/about/write-for-us-brokerage-real-estate/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>51</td><td>Home Offer Solutions</td><td><a href="https://www.homeoffersolutions.com/real-estate-guest-post-blog/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>landforsaleinabuja.com</td></tr>
+<tr><td>52</td><td>HS Property Funds</td><td><a href="https://www.hspropertyfunds.com/real-estate-guest-posts" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>53</td><td>Estimate Florida Consulting</td><td><a href="https://estimatorflorida.com/real-estate-submit-guest-post/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>housesforsaleinabuja.com</td></tr>
+<tr><td>54</td><td>The House Shop</td><td><a href="https://www.thehouseshop.com/property-blog/guest-post/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>landforsaleinabuja.com</td></tr>
+<tr><td>55</td><td>Spacebring</td><td><a href="https://insidea.com/blog/marketing/real-estate/guest-posting-websites/" target="_blank">link</a></td><td>—</td><td>blog@spacebring.com</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>56</td><td>FastExpert</td><td><a href="https://www.fastexpert.com/write-for-us/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>housesforsaleinabuja.com</td></tr>
+<tr><td>57</td><td>Real Estate Marketing Blog</td><td><a href="https://www.realestatemarketingblog.org/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>58</td><td>AgentFire</td><td><a href="https://agentfire.com/blog/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>housesforsaleinabuja.com</td></tr>
+<tr><td>59</td><td>Placester</td><td><a href="https://placester.com/real-estate-marketing-academy/real-estate-blog-topics" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>60</td><td>HubSpot Real Estate Blogs</td><td><a href="https://blog.hubspot.com/sales/real-estate-blogs" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>landforsaleinabuja.com</td></tr>
+<tr><td>61</td><td>EasyAgentPro</td><td><a href="https://www.easyagentpro.com/blog/real-estate-blogs/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>62</td><td>MarketPlace Homes</td><td><a href="https://marketplacehomes.com/blog/real-estate-trends/top-10-real-estate-blogs-2024/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>housesforsaleinabuja.com</td></tr>
+<tr><td>63</td><td>NAR Realtor Blogs</td><td><a href="https://www.nar.realtor/blogs" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>64</td><td>Lighterside of Real Estate</td><td><a href="https://lightersideofrealestate.com/contributors" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>landforsaleinabuja.com</td></tr>
+<tr><td>65</td><td>HousingWire</td><td><a href="https://www.housingwire.com/contributor-submissions/" target="_blank">link</a></td><td>Contributor Team</td><td>contributor@housingwire.com</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>66</td><td>BiggerPockets Blog</td><td><a href="https://www.biggerpockets.com/blog/biggerpockets-blog-guest-blogger-guidelines-suggestions" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>landforsaleinabuja.com</td></tr>
+<tr><td>67</td><td>BiggerPockets Contributors</td><td><a href="https://www.biggerpockets.com/blog/contributors" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>68</td><td>NREIG</td><td><a href="https://nreig.com/tag/guest-post/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>housesforsaleinabuja.com</td></tr>
+<tr><td>69</td><td>REI Diamonds</td><td><a href="https://reidiamonds.com/podcast/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Partnership</td><td>airealent.ng</td></tr>
+<tr><td>70</td><td>REI Ink</td><td><a href="https://rei-ink.com/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>landforsaleinabuja.com</td></tr>
+<tr><td>71</td><td>REI Club</td><td><a href="https://reiclub.com/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>72</td><td>REI Nation</td><td><a href="https://www.reination.com" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>housesforsaleinabuja.com</td></tr>
+<tr><td>73</td><td>Connected Investors</td><td><a href="https://connectedinvestors.com/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>landforsaleinabuja.com</td></tr>
+<tr><td>74</td><td>Think Realty</td><td><a href="https://thinkrealty.com/join/magazine-2/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>75</td><td>REIT Magazine</td><td><a href="https://www.reit.com/news/reit-magazine" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>housesforsaleinabuja.com</td></tr>
+<tr><td>76</td><td>Property Chronicle</td><td><a href="https://www.propertychronicle.com/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>landforsaleinabuja.com</td></tr>
+<tr><td>77</td><td>Badass Backlinks Finance</td><td><a href="https://badassbacklinks.com/finance-guest-post-sites/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Resource</td><td>airealent.ng</td></tr>
+<tr><td>78</td><td>Serpzilla Finance</td><td><a href="https://serpzilla.com/blog/finance-guest-posting-sites/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Resource</td><td>housesforsaleinabuja.com</td></tr>
+<tr><td>79</td><td>Auto Page Rank Finance</td><td><a href="https://autopagerank.com/blogs-accepting-guest-posts-finance/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Resource</td><td>landforsaleinabuja.com</td></tr>
+<tr><td>80</td><td>CCR-Mag Finance</td><td><a href="https://ccr-mag.com/top-finance-blogs-that-accept-guest-posts/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Resource</td><td>airealent.ng</td></tr>
+<tr><td>81</td><td>Finance Guest Post</td><td><a href="https://www.financeguestpost.com/finance-blogs-accepting-guest-posts.html" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Resource</td><td>housesforsaleinabuja.com</td></tr>
+<tr><td>82</td><td>Linkio Finance</td><td><a href="https://www.linkio.com/guest-posting-sites/finance-blogs" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Resource</td><td>landforsaleinabuja.com</td></tr>
+<tr><td>83</td><td>Posticy Finance</td><td><a href="https://posticy.com/blog/finance-guest-posting/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Resource</td><td>airealent.ng</td></tr>
+<tr><td>84</td><td>Medium Finance Posts</td><td><a href="https://medium.com/@rioalbert778/top-100-finance-guest-posting-sites-list-be4b477be919" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Resource</td><td>housesforsaleinabuja.com</td></tr>
+<tr><td>85</td><td>Get Out of Debt</td><td><a href="https://getoutofdebt.org/347/guest-post-mortgage-tips-and-money-saving-advice" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>landforsaleinabuja.com</td></tr>
+<tr><td>86</td><td>Mortgage Guest Posts</td><td><a href="https://rocketguestposting.com/guest-posting-niches/453/mortgages" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Resource</td><td>airealent.ng</td></tr>
+<tr><td>87</td><td>Namaste UI</td><td><a href="https://www.namasteui.com/reasons-to-use-a-professional-mortgage-broker/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>housesforsaleinabuja.com</td></tr>
+<tr><td>88</td><td>Good Vibe Squad</td><td><a href="https://www.goodvibesquad.com/blog/mortgage-blogs-to-follow/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Resource</td><td>landforsaleinabuja.com</td></tr>
+<tr><td>89</td><td>The Mortgage Reports</td><td><a href="https://www.heinegoodalelaw.com/real-estate-corner/top-real-estate-magazines-to-follow" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Resource</td><td>airealent.ng</td></tr>
+<tr><td>90</td><td>Real Estate Investor Magazines</td><td><a href="https://www.realestateinvestormagazines.com/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Resource</td><td>housesforsaleinabuja.com</td></tr>
+<tr><td>91</td><td>Think Realty Magazine</td><td><a href="https://thinkrealty.com/join/magazine-2/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>landforsaleinabuja.com</td></tr>
+<tr><td>92</td><td>Muck Rack Real Estate Magazines</td><td><a href="https://muckrack.com/rankings/top-30-us-real-estate-magazines" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Resource</td><td>airealent.ng</td></tr>
+<tr><td>93</td><td>SharpLaunch CRE Publications</td><td><a href="https://www.sharplaunch.com/blog/the-essential-list-of-commercial-real-estate-trade-journals" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Resource</td><td>housesforsaleinabuja.com</td></tr>
+<tr><td>94</td><td>BuildOut CRE</td><td><a href="https://www.buildout.com/blog-posts/top-cre-publications" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Resource</td><td>landforsaleinabuja.com</td></tr>
+<tr><td>95</td><td>New Silver REI</td><td><a href="https://newsilver.com/the-lender/best-real-estate-newsletters-for-property-investors/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Resource</td><td>airealent.ng</td></tr>
+<tr><td>96</td><td>Lodgify</td><td><a href="https://www.lodgify.com/blog/property-management-blogs/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Resource</td><td>housesforsaleinabuja.com</td></tr>
+<tr><td>97</td><td>Second Nature</td><td><a href="https://www.secondnature.com/blog/best-property-management-blogs" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Resource</td><td>landforsaleinabuja.com</td></tr>
+<tr><td>98</td><td>DoorLoop</td><td><a href="https://www.doorloop.com/blog/best-property-management-blogs" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Resource</td><td>airealent.ng</td></tr>
+<tr><td>99</td><td>AMRYTT Real Estate</td><td><a href="https://amrytt.com/real-estate-blogs-that-accept-guest-posts/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Resource</td><td>housesforsaleinabuja.com</td></tr>
+<tr><td>100</td><td>Guest Post Links Real Estate</td><td><a href="https://guestpostlinks.net/niche/property-real-estate/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Resource</td><td>landforsaleinabuja.com</td></tr>
+<tr><td>101</td><td>Serpzilla Real Estate</td><td><a href="https://serpzilla.com/blog/real-estate-guest-posting-sites/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Resource</td><td>airealent.ng</td></tr>
+<tr><td>102</td><td>T-Ranks Real Estate</td><td><a href="https://t-ranks.com/backlinks/real-estate-guest-post-guide/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Resource</td><td>housesforsaleinabuja.com</td></tr>
+<tr><td>103</td><td>iCopify Real Estate</td><td><a href="https://www.icopify.com/real-estate-guest-posting-websites-and-blogs/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Resource</td><td>landforsaleinabuja.com</td></tr>
+<tr><td>104</td><td>Linkio Real Estate</td><td><a href="https://www.linkio.com/guest-posting-sites/real-estate-blogs" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Resource</td><td>airealent.ng</td></tr>
+<tr><td>105</td><td>SEO Sandwitch Sites</td><td><a href="https://seosandwitch.com/real-estate-guest-posting-sites/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Resource</td><td>housesforsaleinabuja.com</td></tr>
+<tr><td>106</td><td>Guest Hook</td><td><a href="https://www.lodgify.com/blog/property-management-blogs/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Resource</td><td>landforsaleinabuja.com</td></tr>
+<tr><td>107</td><td>Fourandhalf</td><td><a href="https://www.secondnature.com/blog/best-property-management-blogs" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Resource</td><td>airealent.ng</td></tr>
+<tr><td>108</td><td>Second Nature Content</td><td><a href="https://www.secondnature.com/blog/best-property-management-blogs" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>housesforsaleinabuja.com</td></tr>
+<tr><td>109</td><td>The Content Panel</td><td><a href="https://thecontentpanel.com/blog-post-ideas/property-management-topics-2/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Resource</td><td>landforsaleinabuja.com</td></tr>
+<tr><td>110</td><td>Content Panel Property</td><td><a href="https://thecontentpanel.com/blog-post-ideas/property-management-topics/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Resource</td><td>airealent.ng</td></tr>
+<tr><td>111</td><td>Hooquest Real Estate</td><td><a href="https://hooquest.com/how-and-where-to-submit-real-estate-guest-posts/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Resource</td><td>housesforsaleinabuja.com</td></tr>
+<tr><td>112</td><td>AMRYTT Construction</td><td><a href="https://amrytt.com/construction-repairs-blogs-that-accept-guest-posts/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Resource</td><td>landforsaleinabuja.com</td></tr>
+<tr><td>113</td><td>Guest Post Links Construction</td><td><a href="https://guestpostlinks.net/niche/construction-repairs/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Resource</td><td>airealent.ng</td></tr>
+<tr><td>114</td><td>Shine Your Light Blog</td><td><a href="https://shineyourlightblog.com/construction-guest-blogging/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>housesforsaleinabuja.com</td></tr>
+<tr><td>115</td><td>Construction Business Owner</td><td><a href="https://www.constructionbusinessowner.com/latest-blog-posts" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>landforsaleinabuja.com</td></tr>
+<tr><td>116</td><td>Builder Trend</td><td><a href="https://buildertrend.com/blog/dos-donts-of-guest-blogging/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>117</td><td>INSIDEA Contractors</td><td><a href="https://insidea.com/blog/marketing/general-contractors/top-guest-posting-websites/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Resource</td><td>housesforsaleinabuja.com</td></tr>
+<tr><td>118</td><td>Serpzilla Construction</td><td><a href="https://serpzilla.com/blog/construction-guest-posting-sites/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Resource</td><td>landforsaleinabuja.com</td></tr>
+<tr><td>119</td><td>Estimate Florida Construction</td><td><a href="https://estimatorflorida.com/guest-post-for-construction-industry/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>120</td><td>Guest Post Links 90+</td><td><a href="https://guestpostlinks.net/construction-guest-posting-sites/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Resource</td><td>housesforsaleinabuja.com</td></tr>
+<tr><td>121</td><td>Construction Guest Posting</td><td><a href="https://guestpostlinks.net/construction-guest-posting-sites/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>landforsaleinabuja.com</td></tr>
+<tr><td>122</td><td>Best Construction Blogs</td><td><a href="https://serpzilla.com/blog/construction-guest-posting-sites/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Resource</td><td>airealent.ng</td></tr>
+<tr><td>123</td><td>Construction & Repairs</td><td><a href="https://amrytt.com/construction-repairs-blogs-that-accept-guest-posts/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Resource</td><td>housesforsaleinabuja.com</td></tr>
+<tr><td>124</td><td>Construction Guest Sites</td><td><a href="https://insidea.com/blog/marketing/general-contractors/top-guest-posting-websites/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>landforsaleinabuja.com</td></tr>
+<tr><td>125</td><td>Architecture BIM</td><td><a href="https://insidea.com/blog/marketing/general-contractors/top-guest-posting-websites/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>126</td><td>DIY Home Decor Blog</td><td><a href="https://shineyourlightblog.com/construction-guest-blogging/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>housesforsaleinabuja.com</td></tr>
+<tr><td>127</td><td>Casalinda Hotel & Gallery Resort</td><td><a href="https://casalindahotel.com/write-for-us/" target="_blank">link</a></td><td>—</td><td>contact page</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>128</td><td>Living in Nigeria</td><td><a href="https://www.livinginnigeria.com/write-for-us/" target="_blank">link</a></td><td>—</td><td>contact@livinginnigeria.com</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>129</td><td>UrbanSplatter Nigeria</td><td><a href="https://www.urbansplatter.com/write-for-us-nigeria/" target="_blank">link</a></td><td>—</td><td>contact@urbansplatter.com</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>130</td><td>CodedWebmaster</td><td><a href="https://www.codedwebmaster.com/guest-post-write-for-us/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Guest Post (paid option)</td><td>airealent.ng</td></tr>
+<tr><td>131</td><td>BluCactus Nigeria</td><td><a href="https://www.blucactus.com.ng/write-for-us/" target="_blank">link</a></td><td>—</td><td>contact page</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>132</td><td>Caroline Wabara</td><td><a href="https://carolinewabara.com/write-for-us/" target="_blank">link</a></td><td>—</td><td>contact page</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>133</td><td>NaijaGoDigital</td><td><a href="https://www.naijagodigital.com/write-for-us/" target="_blank">link</a></td><td>—</td><td>contact page</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>134</td><td>Naija Online Biz</td><td><a href="https://www.naijaonlinebiz.com/guest-post" target="_blank">link</a></td><td>—</td><td>contact page</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>135</td><td>Nigeria Business Pro</td><td><a href="https://nigeriabusinesspro.com/write-for-us-guest-post" target="_blank">link</a></td><td>Editorial</td><td>editor@nigeriabusinesspro.com</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>136</td><td>ConsultEase</td><td><a href="https://consultease.com/write-for-us" target="_blank">link</a></td><td>Editorial</td><td>info@consultease.com</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>137</td><td>Business Today NG</td><td><a href="https://businesstoday-ng.com/" target="_blank">link</a></td><td>—</td><td>contact page</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>138</td><td>Troloppe Property Services</td><td><a href="https://troloppe.com/insights" target="_blank">link</a></td><td>—</td><td>contact page</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>139</td><td>Nigeria Real Estate Blog</td><td><a href="https://nigeriarealestateblog.com" target="_blank">link</a></td><td>—</td><td>contact page</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>140</td><td>BusinessDay NG (Real Estate)</td><td><a href="https://businessday.ng/real-estate" target="_blank">link</a></td><td>—</td><td>contact page</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>141</td><td>Nairametrics</td><td><a href="https://nairametrics.com" target="_blank">link</a></td><td>Editorial Team</td><td>outreach@nairametrics.com</td><td><span class="pill status-pending">email_found</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>142</td><td>Thisdaylive</td><td><a href="https://www.thisdaylive.com" target="_blank">link</a></td><td>Editorial Team</td><td>hello@thisdaylive.com</td><td><span class="pill status-pending">email_found</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>143</td><td>The Africanvestor</td><td><a href="https://theafricanvestor.com" target="_blank">link</a></td><td>—</td><td>contact page</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>144</td><td>Techpoint Africa</td><td><a href="https://techpoint.africa" target="_blank">link</a></td><td>Business Team</td><td>business@techpoint.africa</td><td><span class="pill status-pending">email_found</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>145</td><td>TechCabal</td><td><a href="https://techcabal.com" target="_blank">link</a></td><td>Editorial Team</td><td>editor@techcabal.com</td><td><span class="pill status-pending">email_found</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>146</td><td>NaijaTechGuide</td><td><a href="https://naijatechguide.com" target="_blank">link</a></td><td>—</td><td>contact page</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>147</td><td>SquirrelPR Nigeria</td><td><a href="https://www.squirrelpr.com" target="_blank">link</a></td><td>—</td><td>contact page</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>148</td><td>Money Visual</td><td><a href="https://moneyvisual.com/write-for-us" target="_blank">link</a></td><td>Editorial</td><td>themoneyvisual@gmail.com</td><td><span class="pill status-sent">outreach_sent</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>149</td><td>Total Entrepreneurs</td><td><a href="https://thetotalentrepreneurs.com/write-for-us" target="_blank">link</a></td><td>—</td><td>contact page</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>150</td><td>DALTX Real Estate</td><td><a href="https://daltxrealestate.com/guest-post/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>151</td><td>Propaura</td><td><a href="https://propaura.com/write-for-us/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>152</td><td>MarkMeets Property</td><td><a href="https://markmeets.com/property/write-for-us-real-estate-guest-post/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>153</td><td>SEO Sandwitch Real Estate</td><td><a href="https://seosandwitch.com/write-for-us-real-estate-guest-post/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>154</td><td>All Around Moving</td><td><a href="https://www.allaroundmoving.com/write-for-us/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>155</td><td>The Global Hues</td><td><a href="https://theglobalhues.com/guest-posting-website-for-real-estate/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>156</td><td>KS Realty Agent</td><td><a href="https://ksrealtyagent.com/write-for-us-real-estate/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>157</td><td>Estate Mate</td><td><a href="https://estatematee.com/write-for-us-real-estate-guest-blogging-opportunity/" target="_blank">link</a></td><td>Hassan</td><td>hassan@haashes.com</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>158</td><td>Ron Parpara Real Estate</td><td><a href="https://www.ronparpara.com/guest-post-guidelines" target="_blank">link</a></td><td>Editor</td><td>editor.ronparpara@gmail.com</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>159</td><td>Link Publishers (Real Estate)</td><td><a href="https://linkpublishers.com/blog/real-estate-write-for-us/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>160</td><td>ELIKA Real Estate</td><td><a href="https://www.elikarealestate.com/blog/real-estate-writing/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>161</td><td>Estate Skyline</td><td><a href="https://estateskyline.co/blog/write-for-us/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>162</td><td>SKN Real Estate</td><td><a href="https://sknrealestate.com/write-for-us/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>163</td><td>Nicolai Real Estate</td><td><a href="https://nicolairealestate.com/blogs/write-for-us-sponsored-posts/" target="_blank">link</a></td><td>—</td><td>netherlandsmark@proton.me</td><td><span class="pill status-pending">pending</span></td><td>Guest Post (paid option)</td><td>airealent.ng</td></tr>
+<tr><td>164</td><td>CCIM Institute</td><td><a href="https://www.ccim.com/real-estate-insights/commercial-connections-magazine/write-us" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>165</td><td>AgentAdvice</td><td><a href="https://www.agentadvice.com/blog/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>166</td><td>RealEstateAgent.com</td><td><a href="https://www.realestateagent.com/real-estate-blogger.html" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>167</td><td>GeekEstate Blog</td><td><a href="https://geekestateblog.com/contribute/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>168</td><td>ActiveRain</td><td><a href="https://www.activerain.com/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>169</td><td>The Close</td><td><a href="https://theclose.com/real-estate-blogs/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>170</td><td>Developer Gang (Real Estate)</td><td><a href="https://developergang.com/write-for-us-real-estate-blogs" target="_blank">link</a></td><td>—</td><td>developergaang1@gmail.com</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>171</td><td>LinksManagement Real Estate</td><td><a href="https://www.linksmanagement.com/real-estate-write-for-us/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>172</td><td>GuestBlogging.pro</td><td><a href="https://www.guestblogging.pro/write-for-us-real-estate/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>173</td><td>Pierre Carapetian Group</td><td><a href="https://pierrecarapetian.com/about/write-for-us-brokerage-real-estate/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>174</td><td>Home Offer Solutions</td><td><a href="https://www.homeoffersolutions.com/real-estate-guest-post-blog/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>175</td><td>HS Property Funds</td><td><a href="https://www.hspropertyfunds.com/real-estate-guest-posts" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>176</td><td>The House Shop</td><td><a href="https://www.thehouseshop.com/property-blog/guest-post/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>177</td><td>FastExpert</td><td><a href="https://www.fastexpert.com/write-for-us/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>178</td><td>Real Estate Marketing Blog</td><td><a href="https://www.realestatemarketingblog.org/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>179</td><td>AgentFire</td><td><a href="https://agentfire.com/blog/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>180</td><td>Lighterside of Real Estate</td><td><a href="https://lightersideofrealestate.com/contributors" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>181</td><td>HousingWire</td><td><a href="https://www.housingwire.com/contributor-submissions/" target="_blank">link</a></td><td>Contributor Team</td><td>contributor@housingwire.com</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>182</td><td>BiggerPockets</td><td><a href="https://www.biggerpockets.com/blog/biggerpockets-blog-guest-blogger-guidelines-suggestions" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>183</td><td>REI Ink</td><td><a href="https://rei-ink.com/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>184</td><td>Property Chronicle</td><td><a href="https://www.propertychronicle.com/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>185</td><td>BusinessList Nigeria</td><td><a href="https://www.businesslist.com.ng/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Directory</td><td>airealent.ng</td></tr>
+<tr><td>186</td><td>NaijaDirectory</td><td><a href="https://naijadirectory.org/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Directory</td><td>airealent.ng</td></tr>
+<tr><td>187</td><td>ConnectNigeria</td><td><a href="https://www.connectnigeria.com/businesses" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Directory</td><td>airealent.ng</td></tr>
+<tr><td>188</td><td>Finelib</td><td><a href="https://www.finelib.com/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Directory</td><td>airealent.ng</td></tr>
+<tr><td>189</td><td>YellowBooks Nigeria</td><td><a href="https://www.yellowbooks.ng/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Directory</td><td>airealent.ng</td></tr>
+<tr><td>190</td><td>BizFinder Nigeria</td><td><a href="https://bizfinder.com.ng/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Directory</td><td>airealent.ng</td></tr>
+<tr><td>191</td><td>B2BMAP Nigeria</td><td><a href="https://b2bmap.com/nigeria/companies" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Directory</td><td>airealent.ng</td></tr>
+<tr><td>192</td><td>BusinessListingNigeria</td><td><a href="https://businesslistingnigeria.com.ng/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Directory</td><td>airealent.ng</td></tr>
+<tr><td>193</td><td>ConnectCiti</td><td><a href="https://connectciti.com/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Directory</td><td>airealent.ng</td></tr>
+<tr><td>194</td><td>BusinessConnect Nigeria</td><td><a href="http://businessconnect.com.ng/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Directory</td><td>airealent.ng</td></tr>
+<tr><td>195</td><td>PRLog Abuja</td><td><a href="https://biz.prlog.org/ng,abuja/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Directory</td><td>airealent.ng</td></tr>
+<tr><td>196</td><td>Expat.com Abuja Directory</td><td><a href="https://www.expat.com/en/business/africa/nigeria/abuja/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Directory</td><td>airealent.ng</td></tr>
+<tr><td>197</td><td>Country Yellow Pages</td><td><a href="https://www.countryyellowpages.net/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Directory</td><td>airealent.ng</td></tr>
+<tr><td>198</td><td>NigeriaGalleria Directory</td><td><a href="https://www.nigeriagalleria.com/directory/create-listing/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Directory</td><td>airealent.ng</td></tr>
+<tr><td>199</td><td>NGContacts</td><td><a href="https://www.ngcontacts.com/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Directory</td><td>airealent.ng</td></tr>
+<tr><td>200</td><td>Yellow Pages Nigeria</td><td><a href="https://yellowpagesnigeria.com/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Directory</td><td>airealent.ng</td></tr>
+<tr><td>201</td><td>Nigeria Yellow Pages Online</td><td><a href="https://nigeriayponline.com/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Directory</td><td>airealent.ng</td></tr>
+<tr><td>202</td><td>VConnect</td><td><a href="https://m.vconnect.com/promoteyourbusiness" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Directory</td><td>airealent.ng</td></tr>
+<tr><td>203</td><td>NgEX Business Directory</td><td><a href="https://www.ngex.com/bd/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Directory</td><td>airealent.ng</td></tr>
+<tr><td>204</td><td>Brainito Directory List</td><td><a href="https://www.brainito.com/top-free-business-listing-websites-in-nigeria" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Resource</td><td>airealent.ng</td></tr>
+<tr><td>205</td><td>Entrepreneurs.ng Directory List</td><td><a href="https://entrepreneurs.ng/free-business-directories-in-nigeria/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Resource</td><td>airealent.ng</td></tr>
+<tr><td>206</td><td>TrueHost Directory List</td><td><a href="https://truehost.com.ng/online-business-directories-in-nigeria/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Resource</td><td>airealent.ng</td></tr>
+<tr><td>207</td><td>Abdigital Directory List</td><td><a href="https://abdigital.com.ng/top-20-nigeria-business-directories/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Resource</td><td>airealent.ng</td></tr>
+<tr><td>208</td><td>ProInvoice Directory List</td><td><a href="https://proinvoice.co/top-business-listing-sites-in-nigeria-to-grow-your-visibility-2025-guide/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Resource</td><td>airealent.ng</td></tr>
+<tr><td>209</td><td>SEOLinkWorld Directory List</td><td><a href="https://seolinkworld.com/business-listing-sites-in-nigeria/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Resource</td><td>airealent.ng</td></tr>
+<tr><td>210</td><td>Invoice.ng Directory List</td><td><a href="https://invoice.ng/blog/business-listing-sites-in-nigeria/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Resource</td><td>airealent.ng</td></tr>
+<tr><td>211</td><td>Daltx Real Estate (Alt)</td><td><a href="https://daltxrealestate.com/guest-post/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>212</td><td>Estate Skyline (Alt)</td><td><a href="https://estateskyline.co/blog/write-for-us/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>213</td><td>Linkio Real Estate List</td><td><a href="https://www.linkio.com/guest-posting-sites/real-estate-blogs" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Resource</td><td>airealent.ng</td></tr>
+<tr><td>214</td><td>T-Ranks Real Estate List</td><td><a href="https://t-ranks.com/backlinks/real-estate-guest-post-guide/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Resource</td><td>airealent.ng</td></tr>
+<tr><td>215</td><td>iCopify Real Estate List</td><td><a href="https://www.icopify.com/real-estate-guest-posting-websites-and-blogs/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Resource</td><td>airealent.ng</td></tr>
+<tr><td>216</td><td>Serpzilla Real Estate List</td><td><a href="https://serpzilla.com/blog/real-estate-guest-posting-sites/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Resource</td><td>airealent.ng</td></tr>
+<tr><td>217</td><td>GuestPostLinks Real Estate List</td><td><a href="https://guestpostlinks.net/niche/property-real-estate/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Resource (paid list)</td><td>airealent.ng</td></tr>
+<tr><td>218</td><td>GuestPostLinks Travel List</td><td><a href="https://guestpostlinks.net/niche/travel-tourism/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Resource (paid list)</td><td>airealent.ng</td></tr>
+<tr><td>219</td><td>RealEstateMarketingBlog.org</td><td><a href="https://www.realestatemarketingblog.org/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>220</td><td>AgentFire Blog</td><td><a href="https://agentfire.com/blog/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>221</td><td>Placester</td><td><a href="https://placester.com/real-estate-marketing-academy/real-estate-blog-topics" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>222</td><td>EasyAgentPro</td><td><a href="https://www.easyagentpro.com/blog/real-estate-blogs/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>223</td><td>MarketPlace Homes</td><td><a href="https://marketplacehomes.com/blog/real-estate-trends/top-10-real-estate-blogs-2024/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>224</td><td>NAR Realtor Blogs</td><td><a href="https://www.nar.realtor/blogs" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>225</td><td>Lighterside of Real Estate (Alt)</td><td><a href="https://lightersideofrealestate.com/contributors" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+<tr><td>226</td><td>Property Chronicle (Alt)</td><td><a href="https://www.propertychronicle.com/" target="_blank">link</a></td><td>—</td><td>contact form</td><td><span class="pill status-pending">pending</span></td><td>Guest Post</td><td>airealent.ng</td></tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="section" id="content">
+        <h2>Content Resources</h2>
+        <div class="tiles">
+          <div class="tile"><h2>TikTok</h2><p>Daily hooks + scripts.</p><div class="actions"><a class="btn" href="tiktok-calendar.md">Open</a></div></div>
+          <div class="tile"><h2>YouTube</h2><p>Long‑form + shorts plan.</p><div class="actions"><a class="btn" href="youtube-calendar.md">Open</a></div></div>
+          <div class="tile"><h2>SpyWizards Content</h2><p>Article ideas & content bank.</p><div class="actions"><a class="btn" href="spywizards-article-ideas.md">Open</a></div></div>
+          <div class="tile"><h2>Outreach Logs</h2><p>Batch send log.</p><div class="actions"><a class="btn" href="outreach_log_2026_02_20.csv">Open</a></div></div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script>
+    // Reuse existing table rows from legacy UI file if present
+    // If not, this remains empty.
+    // Filter function
+    function filterTable(status) {
+      const rows = document.querySelectorAll('#backlinkTable tbody tr');
+      rows.forEach(row => {
+        const cell = row.querySelector('td:nth-child(6)');
+        if (!cell) return;
+        const text = cell.innerText.toLowerCase();
+        if (status === 'all') { row.style.display = ''; return; }
+        row.style.display = text.includes(status) ? '' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>
