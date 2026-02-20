@@ -1,59 +1,82 @@
 # Social Plan (X + LinkedIn) — Israel Akhabue
 
-## Identity / Positioning
-- Real estate expert + tech‑savvy (“vibe coder”)
-- Focus: Abuja real estate (luxury + verified listings + due diligence)
-- Audience: buyers, investors, developers, diaspora (all)
-- Tone: professional, educational, practical, sometimes bold (all)
+## Positioning (human voice)
+- **Real estate expert + tech‑savvy operator** ("vibe coder")
+- **Abuja specialist**: verified listings, due diligence, realistic pricing, diaspora buyers
+- Voice: **practical, protective, confident** (not salesy)
 
-## X Handle
-- https://x.com/israelakhas
+## Audience
+- Buyers (local + diaspora), investors, developers, professionals
 
-## LinkedIn
-- https://www.linkedin.com/in/akhabue-israel-1b85ab27b
+## Content Pillars (weekly mix)
+1) **Due diligence & buyer protection** (titles, surveys, consent, red flags)
+2) **Neighborhood value** (Gwarinpa, Wuse 2, Katampe, Maitama, Asokoro, Jahi, Jabi, Life Camp, Lokogoma)
+3) **Market reality** (pricing bands, rental demand, liquidity)
+4) **Insider process** (how deals close, fees, service charges, timelines)
 
-## Workflow Preference
-- Drafts first; user reviews before posting
+## Cadence (drafts first)
+- **X:** 1–2 posts/day (Mon–Sat), 1 thread/week
+- **LinkedIn:** 3 posts/week (Mon/Wed/Fri)
+- **IG/TikTok:** 3–5 short videos/week (hooks + captions)
 
-## Hourly Trend Ping
-- Every 1 hour: check Nigeria trends + where to comment (cron set)
-
----
-
-## Initial Drafts (X)
-1) **Authority/Checklist**
-   Most buyers in Abuja lose money at inspection because they don’t ask 3 questions:
-   1) Title history (C of O / R of O / Gov Consent)
-   2) Survey match (coordinates)
-   3) Service charge breakdown
-   If you’re buying this year, save this.
-
-2) **Neighborhood Value**
-   Gwarinpa vs Wuse 2: same budget, different lifestyle.
-   Gwarinpa = more space + family vibe.
-   Wuse 2 = walkability + business access.
-   Which would you choose and why?
-
-3) **Myth‑busting**
-   Katampe Extension isn’t “far.” It’s just under‑explained.
-   Prices are still below Maitama/Asokoro, but the upside is higher.
-   If you want value + appreciation, look closer.
-
-4) **Short Insight**
-   C of O isn’t the goal. **Verifiable title history** is.
-   Ask for: survey, file history, and consent trail.
-   Peace of mind > marketing.
-
-5) **Quick Tip**
-   Self‑contain in Abuja now falls into 3 tiers:
-   • Budget (basic)
-   • Mid (security + water)
-   • Premium (parking + stable power)
-   Pay for what you need, not noise.
+## Core CTAs (rotate)
+- “Comment **Checklist** for Abuja buyer verification list.”
+- “DM **[Area]** for verified options.”
+- “Save this if you’re buying this year.”
 
 ---
 
-## Initial Drafts (LinkedIn)
+# Drafts — X (human, Abuja‑specific)
+
+**X1 — Buyer protection**
+If you’re buying in Abuja this year, your first payment should be for **verification**, not excitement. 
+Title history + survey match + consent trail = peace of mind.
+
+**X2 — Gwarinpa reality**
+Gwarinpa stays liquid because rentals move fast. 
+If you want steady rental demand, start there — not just the most fashionable area.
+
+**X3 — Katampe insight**
+Katampe Extension isn’t “far.” It’s under‑explained. 
+Prices are still below Maitama/Asokoro, but the gap is closing.
+
+**X4 — Fees that hurt**
+Most buyers are shocked by 3 fees: agency, legal, and service charge. 
+Ask for the full breakdown before you commit.
+
+**X5 — Process clarity**
+A clean Abuja transaction usually follows: 
+Inspection → Title check → Survey verification → Offer → Consent → Payment.
+Anything skipping steps is a red flag.
+
+**X6 — Area comparison**
+Wuse 2 gives business access; Gwarinpa gives space. 
+Same budget, different life. What are you optimizing for?
+
+**X7 — Diaspora tip**
+If you live abroad and are buying in Abuja, insist on: 
+1) Verification report
+2) Video inspection walk‑through
+3) Escrow‑style payment plan
+
+**X8 — Service charge warning**
+Service charge is fine — **unpredictable service charge** is not. 
+Ask for the last 12 months before you buy.
+
+**X9 — Short truth**
+C of O isn’t the goal. **Verifiable history** is.
+
+**X10 — Quick checklist**
+Before you pay:
+✅ title history
+✅ survey coords
+✅ consent trail
+✅ service charges
+
+---
+
+# Drafts — LinkedIn (human + expert)
+
 **LI1 — Thought leadership**
 Most first‑time buyers in Abuja focus on price.
 Experienced buyers focus on **risk**.
@@ -63,7 +86,7 @@ Here are the 3 checks I insist on before recommending any property:
 2) Survey verification (coordinate check)
 3) Service charge / legal fee clarity
 
-This isn’t about fear — it’s about avoiding expensive mistakes.
+This isn’t fear — it’s protection.
 If you want my Abuja verification checklist, comment **“Checklist.”**
 
 **LI2 — Neighborhood breakdown**
@@ -74,4 +97,9 @@ When people ask me “where should I buy in Abuja?” I start with *lifestyle* a
 - **Katampe Extension**: still undervalued with upside
 - **Maitama/Asokoro**: prestige + long‑term value
 
-If you share your budget and goal, I’ll suggest the best fit.
+Tell me your budget + goal, I’ll suggest the best fit.
+
+**LI3 — Fees & clarity**
+The most expensive Abuja properties aren’t always the priciest — they’re the ones with unclear paperwork.
+
+Ask for the **full fee breakdown** and **document history** up front. It saves months later.

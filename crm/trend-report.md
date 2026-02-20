@@ -1,50 +1,60 @@
 # X Trend Research (Nigeria) — 2026‑02‑20
 
-**Source:** trends24.in/nigeria (last 24h snapshot)
+**Source:** Live X search ("Abuja real estate") + Trends24 snapshot.
 
-## Active / Longest Trends
-- Mirabel
-- Simi
-- Nigerian Barca
-- Arsenal
-- Arteta
+## Active / Longest Trends (Trends24)
 - Ramadan
+- Arsenal / Arteta
+- Nigerian Barca
+- Simi
+- Mirabel
 
-## How to Comment (angles that fit your brand)
-**Ramadan**
-- Post angle: housing/community — “Ramadan housing checklist: quiet neighbors, power stability, water access.”
-- Comment angle: appreciation + practical tip for families/tenants.
+## Active Abuja‑Real‑Estate Accounts (X search results)
+- @haqiru (ABUJA REAL ESTATE)
+- @abujaestate_hub (Abuja real estate Hub)
+- @PeacockHomes_NG (Peacock Homes)
+- @GabbiesCourt (Gabbies Court Estate)
+- @AbujaRealtor (Abuja Real Estate)
+- @RealtorInAbuja (Real Estate in Abuja)
+- @TheAbujaRealtor (The Abuja Real Estate Agent)
+- @AmacPrimeLtd (Abuja Real Estate Agent)
+- @AbujaDistricts (Abuja Real Estate Agency)
+- @AbujaRealEstate (Abuja Property Mart)
 
-**Arsenal / Arteta / Nigerian Barca**
-- Comment angle (light): “Home match nights need power + safe parking — estate managers should plan for traffic/parking.”
-- Keep it short; avoid over‑stretch.
+## Comment Targets (where visibility is high)
+**1) Real‑estate promo posts (from the accounts above)**
+- Comment with **verification tips**, **area insight**, or **buyer checklist** (adds value, gets pinned/replied).
 
-**Simi / Mirabel**
-- Entertainment trends are less aligned; only engage if there’s a real estate angle (e.g., venue/estate aesthetics).
+**2) Nigeria business media**
+- @Nairametrics, @BusinessDayNG, @TechpointAfrica, @guardianng
+- Comment with **Abuja market data, buyer caution, or diaspora‑buyer lens**.
 
-## Suggested Comment Targets (Nigeria, real‑estate adjacent)
-- @Nairametrics
-- @BusinessDayNG
-- @TechpointAfrica
-- @guardianng
-- @ChannelsTV
-- @SaharaReporters
-- @TheCableNews
-- @NigeriaInfoFM
-- @PunchNewspapers
+---
 
-## Tailored Drafts (trend‑aware)
-**X Draft A — Ramadan**
-Ramadan housing checklist (Abuja): stable power, quiet neighbors, water access, and secure parking. These 4 decide if a home feels peaceful.
+## Sample Replies (human + expert tone)
+**On a promo post (estate launch / land investment)**
+> Solid. Quick reminder for buyers: verify title history + survey coordinates before payment. Abuja deals move fast, but clean documentation saves real money later.
 
-**X Draft B — Arsenal/Arteta (light touch)**
-Match nights expose bad estate planning: traffic, noise, and poor parking control. Good estates plan for peak‑hour movement.
+**On a “distressed sale” post**
+> If anyone is considering distressed deals, insist on file history + consent trail. Discounts are good, surprises aren’t.
 
-**X Draft C — Community tip**
-If you’re renting this year, ask for service charge history + how the estate handles power/water during peak seasons. Saves stress later.
+**On Ramadan trend**
+> Ramadan housing checklist (Abuja): stable power, water access, quiet neighbors, and secure parking. These 4 determine peace for families.
 
-**X Draft D — Abuja value**
-Katampe Extension is still undervalued relative to Maitama/Asokoro — but the gap is closing. Do due diligence early.
+---
 
-**X Draft E — Family focus**
-Gwarinpa remains the most liquid family‑friendly market in Abuja. If your goal is stable rental demand, start there.
+## Trend‑Tuned Drafts (for your account)
+**Draft A — Ramadan**
+Ramadan housing checklist (Abuja): stable power, water access, quiet neighbors, secure parking. These 4 decide if a home feels peaceful.
+
+**Draft B — Market reality**
+Abuja prices aren’t just “up.” They’re diverging. Areas with verified titles + infrastructure are gaining faster than hype zones.
+
+**Draft C — Buyer protection**
+If you’re buying this year, ask for: title history, survey coordinates, service‑charge breakdown. It’s the fastest way to avoid expensive mistakes.
+
+**Draft D — Neighborhood value**
+Katampe Extension is still undervalued relative to Maitama/Asokoro — but the gap is closing. Due diligence early = better options.
+
+**Draft E — Investor lens**
+Gwarinpa stays liquid because rentals move fast. If your plan is rental income, start there.
