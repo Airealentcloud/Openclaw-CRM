@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TikTok Content Calendar</title>
+  <style>
+    :root { --bg:#0b0b0b; --panel:#121212; --panel2:#171717; --border:#262626; --text:#f5f5f5; --muted:#b5b5b5; --gold:#d4af37; }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text)}
+    .wrap{max-width:1100px;margin:0 auto;padding:20px}
+    header{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-bottom:16px}
+    h1{margin:0;color:var(--gold);font-size:22px}
+    .sub{color:var(--muted);font-size:12px}
+    .card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:16px}
+    h2,h3{color:var(--gold)}
+    p,li{color:var(--text);line-height:1.6}
+    table{width:100%;border-collapse:collapse;font-size:12px;background:var(--panel)}
+    th,td{border-bottom:1px solid var(--border);padding:10px;text-align:left}
+    th{background:#151515;color:var(--gold);position:sticky;top:0}
+    tr:hover{background:#141414}
+    .muted{color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>TikTok Content Calendar</h1>
+      <div class="sub">CRM Content View</div>
+    </header>
+    <div class="card" id="content"></div>
+  </div>
+
+  <script>
+    const mdUrl = "tiktok-calendar.md";
+    const contentEl = document.getElementById('content');
+
+    function escapeHtml(str){
+      return str.replace(/[&<>]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+    }
+
+    function renderMarkdown(md){
+      const lines = md.split(/\r?\n/);
+      let html = '';
+      for (let i=0;i<lines.length;i++){
+        const line = lines[i];
+        if (line.trim().startsWith('|') && i+1 < lines.length && lines[i+1].includes('---')){
+          const headers = line.trim().slice(1,-1).split('|').map(s=>s.trim());
+          i++;
+          html += '<div class="card"><div class="muted" style="margin-bottom:8px">Table</div><div style="overflow:auto"><table><thead><tr>' +
+            headers.map(h=>`<th>${escapeHtml(h)}</th>`).join('') +
+            '</tr></thead><tbody>';
+          i++;
+          for (; i<lines.length; i++){
+            const row = lines[i];
+            if (!row.trim().startsWith('|')) { i--; break; }
+            const cells = row.trim().slice(1,-1).split('|').map(s=>s.trim());
+            html += '<tr>' + cells.map(c=>`<td>${escapeHtml(c)}</td>`).join('') + '</tr>';
+          }
+          html += '</tbody></table></div></div>';
+          continue;
+        }
+        if (line.startsWith('# ')) { html += `<h2>${escapeHtml(line.slice(2))}</h2>`; continue; }
+        if (line.startsWith('## ')) { html += `<h3>${escapeHtml(line.slice(3))}</h3>`; continue; }
+        if (line.startsWith('- ')) {
+          let list = '<ul>';
+          for (; i<lines.length; i++){
+            const l = lines[i];
+            if (!l.startsWith('- ')) { i--; break; }
+            list += `<li>${escapeHtml(l.slice(2))}</li>`;
+          }
+          list += '</ul>'; html += list; continue;
+        }
+        if (line.trim() === '') { html += '<br />'; continue; }
+        html += `<p>${escapeHtml(line)}</p>`;
+      }
+      return html;
+    }
+
+    fetch(mdUrl)
+      .then(r=>r.text())
+      .then(md=>{ contentEl.innerHTML = renderMarkdown(md); })
+      .catch(err=>{ contentEl.innerHTML = '<p>Failed to load content.</p>'; console.error(err); });
+  </script>
+</body>
+</html>
