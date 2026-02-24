@@ -1,6 +1,6 @@
 # Dashboard
 
-## Today's Progress (2026-02-23)
+## Today's Progress (2026-02-24)
 
 ### ✅ Completed Tasks
 
@@ -19,6 +19,7 @@
 | airealent.ng Property - WUSE Zone 723sqm Land | ⏸️ BLOCKED (needs manual creation) |
 | airealent.ng Property - Minister Quarters 4BR Terrace | ⚠️ SUBAGENT ABORTED (not created - data prepared, needs manual) |
 | airealent.ng Property - KATAMPE 6BR Duplex + 1BQ | 📋 QUEUED (11 images received, text prepared) |
+| Property Listing Draft Generator (CSV → Markdown) | ✅ BUILT (automation/listing_generator/) |
 
 ---
 
@@ -61,6 +62,8 @@
 ---
 
 ## Latest Updates
+- **Feb 24:** Built listing draft generator (CSV → SEO-ready Markdown) in `automation/listing_generator/`
+- **Feb 24:** Morning post set prepared (X/LinkedIn/TikTok)
 - **Feb 23:** Started social posting to LinkedIn/X; browser control unstable
 - **Feb 23:** X Developer application in progress for API access
 - **Feb 20:** Israel confirmed property listings completed manually
@@ -69,4 +72,5 @@
 1. SpyWizards Internal Linking (in progress)
 2. Stabilize browser control for LinkedIn/X posting
 3. X API access & direct posting integration
-4. Re-create 6:30 AM Telegram delivery cron job
+4. Review listing generator: confirm meta format + default CTA phone/WhatsApp
+5. Re-create 6:30 AM Telegram delivery cron job
