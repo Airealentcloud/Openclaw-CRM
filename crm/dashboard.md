@@ -64,6 +64,7 @@
 ## Latest Updates
 - **Feb 24:** Built listing draft generator (CSV → SEO-ready Markdown) in `automation/listing_generator/`
 - **Feb 24:** Morning post set prepared (X/LinkedIn/TikTok)
+- **Feb 24:** Local screen node paired and connected (ready for VS Code control)
 - **Feb 23:** Started social posting to LinkedIn/X; browser control unstable
 - **Feb 23:** X Developer application in progress for API access
 - **Feb 20:** Israel confirmed property listings completed manually
