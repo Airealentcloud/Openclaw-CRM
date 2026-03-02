@@ -1,0 +1,145 @@
+﻿[
+    {
+        "site":  "PropertyPro Nigeria",
+        "url":  "https://www.propertypro.ng/advertise",
+        "contact":  "Customer Care",
+        "email":  "customercare@propertypro.ng",
+        "category":  "Directory/Listing",
+        "target_site":  "airealent.ng",
+        "anchor":  "Abuja luxury properties",
+        "target_page":  "Homepage",
+        "status":  "email_found"
+    },
+    {
+        "site":  "Nairaland Real Estate Forum",
+        "url":  "https://www.nairaland.com/real-estate",
+        "contact":  "Moderators",
+        "email":  "admin@nairaland.com",
+        "category":  "Forum/Resource",
+        "target_site":  "housesforsaleinabuja.com",
+        "anchor":  "Abuja houses",
+        "target_page":  "/houses-for-sale-in-gwarinpa",
+        "status":  "pending"
+    },
+    {
+        "site":  "Living in Nigeria",
+        "url":  "https://www.livinginnigeria.com/write-for-us/",
+        "contact":  "Editor",
+        "email":  "contact@livinginnigeria.com",
+        "category":  "Guest Post",
+        "target_site":  "airealent.ng",
+        "anchor":  "Abuja area guide",
+        "target_page":  "/area-guide/",
+        "status":  "pending"
+    },
+    {
+        "site":  "UrbanSplatter Nigeria",
+        "url":  "https://www.urbansplatter.com/write-for-us-nigeria/",
+        "contact":  "Editor",
+        "email":  "contact@urbansplatter.com",
+        "category":  "Guest Post",
+        "target_site":  "airealent.ng",
+        "anchor":  "Abuja real estate",
+        "target_page":  "/property-for-sale/house/in/abuja/",
+        "status":  "pending"
+    },
+    {
+        "site":  "Nairametrics",
+        "url":  "https://nairametrics.com",
+        "contact":  "Editorial Team",
+        "email":  "outreach@nairametrics.com",
+        "category":  "Guest Post",
+        "target_site":  "airealent.ng",
+        "anchor":  "Abuja property investment",
+        "target_page":  "/property-for-sale/house/in/maitama-abuja/",
+        "status":  "email_found"
+    },
+    {
+        "site":  "Thisdaylive",
+        "url":  "https://www.thisdaylive.com",
+        "contact":  "Editorial Team",
+        "email":  "hello@thisdaylive.com",
+        "category":  "Guest Post",
+        "target_site":  "airealent.ng",
+        "anchor":  "Abuja real estate trends",
+        "target_page":  "/property-for-sale/house/in/asokoro-abuja/",
+        "status":  "email_found"
+    },
+    {
+        "site":  "Techpoint Africa",
+        "url":  "https://techpoint.africa",
+        "contact":  "Business Team",
+        "email":  "business@techpoint.africa",
+        "category":  "Guest Post",
+        "target_site":  "airealent.ng",
+        "anchor":  "PropTech in Abuja",
+        "target_page":  "/property-for-sale/house/in/abuja/",
+        "status":  "email_found"
+    },
+    {
+        "site":  "TechCabal",
+        "url":  "https://techcabal.com",
+        "contact":  "Editorial Team",
+        "email":  "editor@techcabal.com",
+        "category":  "Guest Post",
+        "target_site":  "airealent.ng",
+        "anchor":  "PropTech in Abuja",
+        "target_page":  "/property-for-sale/house/in/abuja/",
+        "status":  "email_found"
+    },
+    {
+        "site":  "Estate Mate",
+        "url":  "https://estatematee.com/write-for-us-real-estate-guest-blogging-opportunity/",
+        "contact":  "Hassan",
+        "email":  "hassan@haashes.com",
+        "category":  "Guest Post",
+        "target_site":  "airealent.ng",
+        "anchor":  "Abuja land investment",
+        "target_page":  "/property-for-sale/house/in/katampe-abuja/",
+        "status":  "pending"
+    },
+    {
+        "site":  "Ron Parpara Real Estate",
+        "url":  "https://www.ronparpara.com/guest-post-guidelines",
+        "contact":  "Editor",
+        "email":  "editor.ronparpara@gmail.com",
+        "category":  "Guest Post",
+        "target_site":  "airealent.ng",
+        "anchor":  "Abuja luxury property",
+        "target_page":  "/property-for-sale/house/in/maitama-abuja/",
+        "status":  "pending"
+    },
+    {
+        "site":  "Nicolai Real Estate",
+        "url":  "https://nicolairealestate.com/blogs/write-for-us-sponsored-posts/",
+        "contact":  "Editor",
+        "email":  "netherlandsmark@proton.me",
+        "category":  "Guest Post (paid option)",
+        "target_site":  "airealent.ng",
+        "anchor":  "Abuja property investment",
+        "target_page":  "/property-for-sale/house/in/maitama-abuja/",
+        "status":  "pending"
+    },
+    {
+        "site":  "Developer Gang (Real Estate)",
+        "url":  "https://developergang.com/write-for-us-real-estate-blogs",
+        "contact":  "Editor",
+        "email":  "developergaang1@gmail.com",
+        "category":  "Guest Post",
+        "target_site":  "airealent.ng",
+        "anchor":  "Abuja property trends",
+        "target_page":  "/property-for-sale/house/in/abuja/",
+        "status":  "pending"
+    },
+    {
+        "site":  "HousingWire",
+        "url":  "https://www.housingwire.com/contributor-submissions/",
+        "contact":  "Contributor Team",
+        "email":  "contributor@housingwire.com",
+        "category":  "Guest Post",
+        "target_site":  "airealent.ng",
+        "anchor":  "Abuja housing market",
+        "target_page":  "/property-for-sale/house/in/abuja/",
+        "status":  "pending"
+    }
+]

@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airealent Analytics Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            line-height: 1.6;
+        }
+        .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+        header {
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+        h1 { font-size: 2rem; margin-bottom: 10px; }
+        .subtitle { opacity: 0.9; font-size: 1.1rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .card {
+            background: #1e293b;
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid #334155;
+        }
+        .card h2 {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #94a3b8;
+            margin-bottom: 12px;
+        }
+        .metric { font-size: 2.5rem; font-weight: 700; color: #3b82f6; }
+        .metric-success { color: #22c55e; }
+        .metric-warning { color: #f59e0b; }
+        .metric-danger { color: #ef4444; }
+        .trend { font-size: 0.875rem; margin-top: 8px; }
+        .trend-up { color: #22c55e; }
+        .trend-down { color: #ef4444; }
+        .chart-container {
+            background: #1e293b;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 30px;
+            border: 1px solid #334155;
+        }
+        .chart-container h2 {
+            margin-bottom: 20px;
+            font-size: 1.25rem;
+        }
+        .chart-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+        }
+        .table-container {
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #334155;
+        }
+        th { color: #94a3b8; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; }
+        tr:hover { background: #334155; }
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .badge-high { background: #dc2626; color: white; }
+        .badge-medium { background: #f59e0b; color: black; }
+        .badge-low { background: #16a34a; color: white; }
+        .badge-pending { background: #475569; color: white; }
+        .badge-done { background: #16a34a; color: white; }
+        .progress-bar {
+            background: #334155;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 12px;
+        }
+        .progress-fill {
+            background: linear-gradient(90deg, #3b82f6, #22c55e);
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+        .insight-box {
+            background: linear-gradient(135deg, #1e3a5f, #1e40af);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 16px;
+            font-size: 0.9rem;
+        }
+        .action-list {
+            list-style: none;
+        }
+        .action-list li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .action-list li:before {
+            content: "→";
+            color: #3b82f6;
+        }
+        .date-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            background: #3b82f6;
+            color: white;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+        .platform-tag {
+            display: inline-block;
+            padding: 2px 6px;
+            background: #475569;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            margin-left: 8px;
+        }
+        .funnel-tag {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            margin-left: 8px;
+        }
+        .funnel-awareness { background: #3b82f6; }
+        .funnel-interest { background: #06b6d4; }
+        .funnel-consideration { background: #f59e0b; }
+        .funnel-conversion { background: #22c55e; }
+        .funnel-retention { background: #8b5cf6; }
+        .funnel-leadgen { background: #ec4899; }
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        @media (max-width: 768px) {
+            .two-col { grid-template-columns: 1fr; }
+            .chart-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏠 Airealent Analytics Dashboard</h1>
+            <p class="subtitle">Real-time insights for Abuja's premier real estate agency</p>
+            <p style="margin-top: 10px; opacity: 0.8;">Generated: Saturday, February 28, 2026</p>
+        </header>
+
+        <!-- Key Metrics -->
+        <div class="grid">
+            <div class="card">
+                <h2>🔗 Backlink Outreach</h2>
+                <div class="metric">72/226</div>
+                <div class="trend trend-up">↑ 32% completion</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 31.858407079646017%"></div>
+                </div>
+            </div>
+            <div class="card">
+                <h2>📧 Emails Found</h2>
+                <div class="metric metric-success">9</div>
+                <div class="trend">Ready for outreach</div>
+            </div>
+            <div class="card">
+                <h2>📝 Content Opportunities</h2>
+                <div class="metric metric-warning">5 gaps</div>
+                <div class="trend">High-priority: 3</div>
+            </div>
+            <div class="card">
+                <h2>⚡ SEO Tasks</h2>
+                <div class="metric metric-danger">8</div>
+                <div class="trend">Pending tasks</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Row -->
+        <div class="chart-grid">
+            <div class="chart-container">
+                <h2>Backlink Progress by Category</h2>
+                <canvas id="backlinkChart" width="400" height="300"></canvas>
+            </div>
+            <div class="chart-container">
+                <h2>Lead Pipeline Stages</h2>
+                <canvas id="leadChart" width="400" height="300"></canvas>
+            </div>
+        </div>
+
+        <!-- Content Calendar -->
+        <div class="chart-container">
+            <h2>📅 March 2026 Content Calendar</h2>
+            <p style="margin-bottom: 20px; color: #94a3b8;">Auto-generated based on keyword gaps and competitor analysis</p>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Topic</th>
+                            <th>Type</th>
+                            <th>Platform</th>
+                            <th>Funnel Stage</th>
+                            <th>Target Keywords</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr>
+                            <td><span class="date-badge">Mar 2</span></td>
+                            <td><strong>How to Verify Land Titles in Abuja: Complete C-of-O Guide</strong></td>
+                            <td>Blog</td>
+                            <td><span class="platform-tag">Website/SEO</span></td>
+                            <td><span class="funnel-tag funnel-awareness">Awareness</span></td>
+                            <td><code style="background: #334155; padding: 2px 6px; border-radius: 3px; font-size: 0.75rem;">C-of-O verification, land titles Abuja</code></td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="date-badge">Mar 3</span></td>
+                            <td><strong>Top 5 Property Scams in Abuja (And How to Avoid Them)</strong></td>
+                            <td>Video</td>
+                            <td><span class="platform-tag">TikTok/YouTube</span></td>
+                            <td><span class="funnel-tag funnel-awareness">Awareness</span></td>
+                            <td><code style="background: #334155; padding: 2px 6px; border-radius: 3px; font-size: 0.75rem;">property scams Abuja</code></td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="date-badge">Mar 5</span></td>
+                            <td><strong>Living in Maitama: Abuja's Premier Residential District</strong></td>
+                            <td>Blog</td>
+                            <td><span class="platform-tag">Website/SEO</span></td>
+                            <td><span class="funnel-tag funnel-interest">Interest</span></td>
+                            <td><code style="background: #334155; padding: 2px 6px; border-radius: 3px; font-size: 0.75rem;">Maitama Abuja, luxury homes Maitama</code></td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="date-badge">Mar 6</span></td>
+                            <td><strong>Luxury Tour: Maitama Mansion Showcase</strong></td>
+                            <td>Reel</td>
+                            <td><span class="platform-tag">Instagram/TikTok</span></td>
+                            <td><span class="funnel-tag funnel-interest">Interest</span></td>
+                            <td><code style="background: #334155; padding: 2px 6px; border-radius: 3px; font-size: 0.75rem;">luxury homes Abuja</code></td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="date-badge">Mar 9</span></td>
+                            <td><strong>Asokoro vs Katampe: Which Area is Right for You?</strong></td>
+                            <td>Blog</td>
+                            <td><span class="platform-tag">Website/SEO</span></td>
+                            <td><span class="funnel-tag funnel-consideration">Consideration</span></td>
+                            <td><code style="background: #334155; padding: 2px 6px; border-radius: 3px; font-size: 0.75rem;">Asokoro Abuja, Katampe Abuja</code></td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="date-badge">Mar 10</span></td>
+                            <td><strong>Driving Tour: Best Streets in Asokoro</strong></td>
+                            <td>Video</td>
+                            <td><span class="platform-tag">YouTube</span></td>
+                            <td><span class="funnel-tag funnel-interest">Interest</span></td>
+                            <td><code style="background: #334155; padding: 2px 6px; border-radius: 3px; font-size: 0.75rem;">Asokoro Abuja</code></td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="date-badge">Mar 12</span></td>
+                            <td><strong>Gwarinpa: Nigeria's Largest Estate - Complete Guide</strong></td>
+                            <td>Blog</td>
+                            <td><span class="platform-tag">Website/SEO</span></td>
+                            <td><span class="funnel-tag funnel-interest">Interest</span></td>
+                            <td><code style="background: #334155; padding: 2px 6px; border-radius: 3px; font-size: 0.75rem;">Gwarinpa Abuja, houses Gwarinpa</code></td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="date-badge">Mar 13</span></td>
+                            <td><strong>Budget Buy: Affordable Homes in Gwarinpa</strong></td>
+                            <td>Reel</td>
+                            <td><span class="platform-tag">Instagram/TikTok</span></td>
+                            <td><span class="funnel-tag funnel-consideration">Consideration</span></td>
+                            <td><code style="background: #334155; padding: 2px 6px; border-radius: 3px; font-size: 0.75rem;">affordable homes Abuja</code></td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="date-badge">Mar 16</span></td>
+                            <td><strong>First-Time Buyer Checklist: Abuja Edition</strong></td>
+                            <td>Guide</td>
+                            <td><span class="platform-tag">Website/Lead Magnet</span></td>
+                            <td><span class="funnel-tag funnel-leadgen">Lead Gen</span></td>
+                            <td><code style="background: #334155; padding: 2px 6px; border-radius: 3px; font-size: 0.75rem;">first home Abuja, buying guide</code></td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="date-badge">Mar 17</span></td>
+                            <td><strong>What N20 Million Gets You in Different Abuja Areas</strong></td>
+                            <td>Video</td>
+                            <td><span class="platform-tag">TikTok/YouTube</span></td>
+                            <td><span class="funnel-tag funnel-interest">Interest</span></td>
+                            <td><code style="background: #334155; padding: 2px 6px; border-radius: 3px; font-size: 0.75rem;">property prices Abuja</code></td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="date-badge">Mar 19</span></td>
+                            <td><strong>Jahi: The Fast-Growing Family District</strong></td>
+                            <td>Blog</td>
+                            <td><span class="platform-tag">Website/SEO</span></td>
+                            <td><span class="funnel-tag funnel-interest">Interest</span></td>
+                            <td><code style="background: #334155; padding: 2px 6px; border-radius: 3px; font-size: 0.75rem;">Jahi Abuja, family homes Jahi</code></td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="date-badge">Mar 20</span></td>
+                            <td><strong>Jahi Property Showcase: Modern Family Homes</strong></td>
+                            <td>Reel</td>
+                            <td><span class="platform-tag">Instagram/TikTok</span></td>
+                            <td><span class="funnel-tag funnel-consideration">Consideration</span></td>
+                            <td><code style="background: #334155; padding: 2px 6px; border-radius: 3px; font-size: 0.75rem;">family homes Abuja</code></td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="date-badge">Mar 23</span></td>
+                            <td><strong>Best Areas for Rental Yield in Abuja 2026</strong></td>
+                            <td>Blog</td>
+                            <td><span class="platform-tag">Website/SEO</span></td>
+                            <td><span class="funnel-tag funnel-consideration">Consideration</span></td>
+                            <td><code style="background: #334155; padding: 2px 6px; border-radius: 3px; font-size: 0.75rem;">rental yield Abuja, investment</code></td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="date-badge">Mar 24</span></td>
+                            <td><strong>Investor's Guide: Off-Plan vs Completed Properties</strong></td>
+                            <td>Guide</td>
+                            <td><span class="platform-tag">Website/Lead Magnet</span></td>
+                            <td><span class="funnel-tag funnel-leadgen">Lead Gen</span></td>
+                            <td><code style="background: #334155; padding: 2px 6px; border-radius: 3px; font-size: 0.75rem;">property investment Abuja</code></td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="date-badge">Mar 26</span></td>
+                            <td><strong>Lokogoma: The Hidden Gem for Smart Investors</strong></td>
+                            <td>Blog</td>
+                            <td><span class="platform-tag">Website/SEO</span></td>
+                            <td><span class="funnel-tag funnel-consideration">Consideration</span></td>
+                            <td><code style="background: #334155; padding: 2px 6px; border-radius: 3px; font-size: 0.75rem;">Lokogoma Abuja, invest Abuja</code></td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="date-badge">Mar 27</span></td>
+                            <td><strong>Client Story: From Search to Keys in 30 Days</strong></td>
+                            <td>Video</td>
+                            <td><span class="platform-tag">YouTube/Instagram</span></td>
+                            <td><span class="funnel-tag funnel-conversion">Conversion</span></td>
+                            <td><code style="background: #334155; padding: 2px 6px; border-radius: 3px; font-size: 0.75rem;">Abuja real estate agent</code></td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="date-badge">Mar 30</span></td>
+                            <td><strong>March Market Update: Abuja Real Estate Trends</strong></td>
+                            <td>Newsletter</td>
+                            <td><span class="platform-tag">Email/LinkedIn</span></td>
+                            <td><span class="funnel-tag funnel-retention">Retention</span></td>
+                            <td><code style="background: #334155; padding: 2px 6px; border-radius: 3px; font-size: 0.75rem;">Abuja property market</code></td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Two Column Layout -->
+        <div class="two-col">
+            <!-- SEO Priorities -->
+            <div class="chart-container">
+                <h2>🎯 SEO Priority Tasks</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Task</th>
+                            <th>Impact</th>
+                            <th>Effort</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr>
+                            <td>Disable thin Polylang translations</td>
+                            <td><span class="badge badge-high">High</span></td>
+                            <td>Low</td>
+                            <td><span class="badge badge-pending">pending</span></td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Clean up robots.txt</td>
+                            <td><span class="badge badge-high">High</span></td>
+                            <td>Low</td>
+                            <td><span class="badge badge-pending">pending</span></td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Regenerate sitemap</td>
+                            <td><span class="badge badge-medium">Medium</span></td>
+                            <td>Low</td>
+                            <td><span class="badge badge-pending">pending</span></td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Reassign Uncategorized posts</td>
+                            <td><span class="badge badge-medium">Medium</span></td>
+                            <td>Medium</td>
+                            <td><span class="badge badge-pending">pending</span></td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Add internal links to top 50 pages</td>
+                            <td><span class="badge badge-high">High</span></td>
+                            <td>High</td>
+                            <td><span class="badge badge-pending">pending</span></td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Create 10 location guides</td>
+                            <td><span class="badge badge-high">High</span></td>
+                            <td>High</td>
+                            <td><span class="badge badge-pending">pending</span></td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Create 10 property type guides</td>
+                            <td><span class="badge badge-medium">Medium</span></td>
+                            <td>High</td>
+                            <td><span class="badge badge-pending">pending</span></td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Request indexing for money pages</td>
+                            <td><span class="badge badge-high">High</span></td>
+                            <td>Low</td>
+                            <td><span class="badge badge-pending">pending</span></td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+                <div class="insight-box">
+                    <strong>💡 Quick Wins:</strong> Start with "Disable thin translations" and "Clean robots.txt" - both are high impact, low effort.
+                </div>
+            </div>
+
+            <!-- Content Opportunities -->
+            <div class="chart-container">
+                <h2>🎁 Content Gap Opportunities</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Priority</th>
+                            <th>Est. Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr>
+                            <td><strong>Area Guides</strong></td>
+                            <td><span class="badge badge-high">High</span></td>
+                            <td>High search volume, low competition</td>
+                        </tr>
+                        
+                        <tr>
+                            <td><strong>Buying Process Education</strong></td>
+                            <td><span class="badge badge-high">High</span></td>
+                            <td>High intent, establishes authority</td>
+                        </tr>
+                        
+                        <tr>
+                            <td><strong>Fraud Prevention</strong></td>
+                            <td><span class="badge badge-high">High</span></td>
+                            <td>Builds trust, differentiator</td>
+                        </tr>
+                        
+                        <tr>
+                            <td><strong>Investment Analysis</strong></td>
+                            <td><span class="badge badge-medium">Medium</span></td>
+                            <td>Investor audience, high value</td>
+                        </tr>
+                        
+                        <tr>
+                            <td><strong>First-Time Buyer</strong></td>
+                            <td><span class="badge badge-medium">Medium</span></td>
+                            <td>Large segment, loyalty building</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+                <div class="insight-box">
+                    <strong>🎯 Focus:</strong> Area Guides and Buying Process Education are high-priority gaps that competitors are missing.
+                </div>
+            </div>
+        </div>
+
+        <!-- Backlink Tracker Summary -->
+        <div class="chart-container">
+            <h2>🔗 Backlink Outreach Tracker Summary</h2>
+            <div class="grid" style="margin-top: 20px;">
+                <div class="card" style="background: #0f172a;">
+                    <h2>By Status</h2>
+                    <ul style="list-style: none; margin-top: 12px;">
+                        <li style="padding: 8px 0; border-bottom: 1px solid #334155;">
+                            <span style="color: #22c55e;">●</span> Outreach Sent: <strong>72</strong>
+                        </li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #334155;">
+                            <span style="color: #3b82f6;">●</span> Email Found: <strong>9</strong>
+                        </li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #334155;">
+                            <span style="color: #f59e0b;">●</span> Form Submitted: <strong>1</strong>
+                        </li>
+                        <li style="padding: 8px 0;">
+                            <span style="color: #64748b;">●</span> Pending: <strong>144</strong>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card" style="background: #0f172a;">
+                    <h2>By Category</h2>
+                    <ul style="list-style: none; margin-top: 12px;">
+                        
+                        <li style="padding: 8px 0; border-bottom: 1px solid #334155;">
+                            <span style="color: #3b82f6;">●</span> Guest Post: <strong>95</strong>
+                        </li>
+                        
+                        <li style="padding: 8px 0; border-bottom: 1px solid #334155;">
+                            <span style="color: #3b82f6;">●</span> Directory: <strong>35</strong>
+                        </li>
+                        
+                        <li style="padding: 8px 0; border-bottom: 1px solid #334155;">
+                            <span style="color: #3b82f6;">●</span> Resource: <strong>31</strong>
+                        </li>
+                        
+                        <li style="padding: 8px 0; border-bottom: 1px solid #334155;">
+                            <span style="color: #3b82f6;">●</span> Partnership/Collaboration: <strong>1</strong>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <div class="card" style="background: #0f172a;">
+                    <h2>By Target Site</h2>
+                    <ul style="list-style: none; margin-top: 12px;">
+                        
+                        <li style="padding: 8px 0; border-bottom: 1px solid #334155;">
+                            <span style="color: #22c55e;">●</span> airealent.ng: <strong>168</strong>
+                        </li>
+                        
+                        <li style="padding: 8px 0; border-bottom: 1px solid #334155;">
+                            <span style="color: #22c55e;">●</span> housesforsaleinabuja.com: <strong>29</strong>
+                        </li>
+                        
+                        <li style="padding: 8px 0; border-bottom: 1px solid #334155;">
+                            <span style="color: #22c55e;">●</span> landforsaleinabuja.com: <strong>28</strong>
+                        </li>
+                        
+                        <li style="padding: 8px 0; border-bottom: 1px solid #334155;">
+                            <span style="color: #22c55e;">●</span> mynigeriabusiness.ng: <strong>3</strong>
+                        </li>
+                        
+                        <li style="padding: 8px 0; border-bottom: 1px solid #334155;">
+                            <span style="color: #22c55e;">●</span> 9jadirectory.org: <strong>3</strong>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Items -->
+        <div class="chart-container">
+            <h2>✅ Recommended Actions This Week</h2>
+            <div class="two-col">
+                <div>
+                    <h3 style="color: #3b82f6; margin-bottom: 12px;">High Priority</h3>
+                    <ul class="action-list">
+                        <li>Complete robots.txt cleanup</li>
+                        <li>Disable Polylang thin translations</li>
+                        <li>Request indexing for top 10 money pages</li>
+                        <li>Send batch outreach to 20 pending sites</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="color: #22c55e; margin-bottom: 12px;">Content Creation</h3>
+                    <ul class="action-list">
+                        <li>Write Maitama area guide (1,000 words)</li>
+                        <li>Create C-of-O verification checklist</li>
+                        <li>Film TikTok: "Property Scams to Avoid"</li>
+                        <li>Schedule 2 weeks of social posts</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="insight-box" style="margin-top: 20px;">
+                <strong>📊 Next Review:</strong> Run this dashboard weekly to track progress. Target: Move email_found sites to outreach_sent, complete all Quick Win SEO tasks by end of week.
+            </div>
+        </div>
+
+        <footer>
+            <p>Airealent.ng Analytics Dashboard | Built for Israel | 2/28/2026</p>
+            <p style="margin-top: 8px; opacity: 0.6;">Data sources: Backlink Outreach Tracker, Competitor Analysis, SEO Indexing Plan</p>
+        </footer>
+    </div>
+
+    <script>
+        // Backlink Chart
+        const backlinkCtx = document.getElementById('backlinkChart').getContext('2d');
+        new Chart(backlinkCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ["Guest Post","Directory","Resource","Partnership/Collaboration"],
+                datasets: [{
+                    data: [95,35,31,1],
+                    backgroundColor: ['#3b82f6', '#22c55e', '#f59e0b', '#ef4444']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'bottom', labels: { color: '#e2e8f0' } }
+                }
+            }
+        });
+
+        // Lead Pipeline Chart
+        const leadCtx = document.getElementById('leadChart').getContext('2d');
+        new Chart(leadCtx, {
+            type: 'bar',
+            data: {
+                labels: ["Inquiry","Qualified","Viewing Scheduled","Offer Made","Closed"],
+                datasets: [{
+                    label: 'Leads',
+                    data: [27,18,12,5,2],
+                    backgroundColor: ['#3b82f6', '#06b6d4', '#f59e0b', '#22c55e', '#10b981']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: { color: '#94a3b8' },
+                        grid: { color: '#334155' }
+                    },
+                    x: {
+                        ticks: { color: '#94a3b8' },
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
