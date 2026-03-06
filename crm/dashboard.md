@@ -80,6 +80,7 @@
 | PathwayPIS Progress | ✅ 3 articles published + 1 ready (7,767+ words today) |
 | SEO Fixes Completed | ✅ Article 1 meta/schema fixed, Article 4 enhanced with competitor insights |
 | Social Media Posts | ✅ 5 X-optimized posts delivered + 7 engagement comments (7:01 AM) |
+| Morning Posts (7:30 AM) | ❌ Images not generated (nanobanana requires Python + Google AI SDK) - Suggest text-only posting |
 
 ### 📋 Morning Posts Status (OVERDUE)
 
