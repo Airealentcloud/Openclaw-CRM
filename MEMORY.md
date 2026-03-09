@@ -26,15 +26,27 @@
 - session-logs (jq + rg)
 
 ## WordPress Sites
-- Test site: https://spywizards.com/blog/wp-admin/
-  - Username: aiwisemind
-  - Role: Admin (test site)
+
+### spywizards.com (Separate Project - Not Related to airealent.ng)
+- URL: https://spywizards.com/blog/wp-admin/
+- Username: aiwisemind
+- Role: Admin (test/backup site)
+- Context: Completely separate from airealent.ng and the A.I Realent business
+
+### airealent.ng (Main Business Site)
+- Main real estate website for A.I Realent Global Resources Ltd.
+- Focus: Abuja luxury properties, verified listings, AI-powered due diligence
+- Related sites: housesforsaleinabuja.com, landforsaleinabuja.com
 
 ## Notes
 - Google Antigravity auth plugin disabled (was returning "no longer supported" error)
 - Switched from Google Antigravity to OpenAI Codex provider on 2026-01-31
 - Browser control: ALWAYS use --browser-profile openclaw (direct CDP, port 18800). Do NOT use the "chrome" extension relay profile — it times out. The openclaw profile is set as default.
 - WordPress admin is already logged in on the openclaw browser profile (tab open at https://spywizards.com/blog/wp-admin/)
+- Spywizards WP admin: https://spywizards.com/blog/wp-admin/ | username: aiwisemind | REST API app password provided by user (not stored; request when needed)
+- CRM GitHub repo: https://github.com/Airealentcloud/Openclaw-CRM.git
+- Image Upload: wp-wpcli-and-ops skill enables bulk image imports via `wp media import` command
+- CRM UI update requested: build a better, mobile‑friendly "mission control" dashboard; show clearer outreach status (pending vs email‑ready) and include TikTok/YouTube content sections.
 
 ## Business Context (2026-02-01)
 - Israel Akhabue: Nigerian entrepreneur, CEO of A.I Realent Global Resources Ltd.
