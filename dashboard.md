@@ -52,6 +52,21 @@
 
 ---
 
+## 🔧 PATHWAYPIS 301 REDIRECTS — OPTION C SELECTED (March 10, 6:45 AM)
+
+**Status:** ✅ Implementation guide created — Ready for deployment
+**Method:** Redirection Plugin (WordPress)
+**File:** `pathwaypis-redirects-implementation.md`
+
+### Redirects to Implement:
+1. `/how-to-hire-a-private-investigator-12-step-checklist-2026/` → `/how-to-hire-a-private-investigator-12-step-checklist-for-2026/`
+2. `/private-investigator-cost-guide-what-drives-price-in-2026/` → `/private-investigator-cost-2026-complete-pricing-guide-what-drives-price/`
+3. `/is-it-legal-to-hire-a-private-investigator-complete-2026-guide/` → `/private-investigator-legal-complete-2026-guide-to-laws-licensing-legal-boundaries/`
+
+**Next Step:** Install Redirection plugin in WordPress admin and add the 3 redirects (5 min task)
+
+---
+
 ## 🚀 PATHWAYPIS PUBLISHING PROGRESS (March 9, 2026 - 2:50 AM UPDATE)
 
 ### 📊 CURRENT STATUS:
