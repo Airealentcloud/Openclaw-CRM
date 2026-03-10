@@ -1,0 +1,251 @@
+{
+  "timestamp": "2026-03-09T22:54:47.601Z",
+  "summary": {
+    "total": 25,
+    "updated": 7,
+    "skipped": 18,
+    "failed": 0
+  },
+  "results": [
+    {
+      "id": 1598,
+      "title": "Can a Private Investigator Get Phone Records? What&#8217;s Legal &#038; What&#8217;s Not",
+      "status": "skipped",
+      "categories": [
+        150
+      ]
+    },
+    {
+      "id": 1597,
+      "title": "GPS Tracking Laws for Private Investigators: 2026 State-by-State Guide",
+      "status": "skipped",
+      "categories": [
+        150
+      ]
+    },
+    {
+      "id": 1596,
+      "title": "What Can Private Investigators Legally Do? Complete Powers &#038; Limitations Guide",
+      "status": "updated",
+      "categories": [
+        150,
+        153,
+        154,
+        151,
+        152
+      ]
+    },
+    {
+      "id": 1595,
+      "title": "Is It Legal for a Private Investigator to Follow You? Surveillance Law Explained",
+      "status": "updated",
+      "categories": [
+        150,
+        153,
+        154,
+        151,
+        152
+      ]
+    },
+    {
+      "id": 1594,
+      "title": "Private Investigator Background Check Cost: 2026 Pricing &#038; What&#8217;s Included",
+      "status": "updated",
+      "categories": [
+        150,
+        153,
+        154,
+        151,
+        152
+      ]
+    },
+    {
+      "id": 1593,
+      "title": "Corporate Investigator Services: Due Diligence, Fraud &#038; Employee Misconduct [2026]",
+      "status": "updated",
+      "categories": [
+        150,
+        153,
+        154,
+        151,
+        152
+      ]
+    },
+    {
+      "id": 1592,
+      "title": "Private Investigator for Cheating Spouse: 2026 Cost Guide &#038; What to Expect",
+      "status": "updated",
+      "categories": [
+        150,
+        153,
+        154,
+        151,
+        152
+      ]
+    },
+    {
+      "id": 1591,
+      "title": "Can a Private Investigator Find Hidden Bank Accounts? [Complete 2026 Guide]",
+      "status": "updated",
+      "categories": [
+        150,
+        153,
+        154,
+        151,
+        152
+      ]
+    },
+    {
+      "id": 1590,
+      "title": "How to Find a Private Investigator Near Me: 2026 Selection Guide",
+      "status": "updated",
+      "categories": [
+        150,
+        153,
+        154,
+        151,
+        152
+      ]
+    },
+    {
+      "id": 1582,
+      "title": "Private Investigator Legal: Complete 2026 Guide to Laws, Licensing &#038; Legal Boundaries",
+      "status": "skipped",
+      "categories": [
+        145,
+        149
+      ]
+    },
+    {
+      "id": 1572,
+      "title": "How to Hire a Private Investigator: 12-Step Checklist for 2026",
+      "status": "skipped",
+      "categories": [
+        145,
+        149
+      ]
+    },
+    {
+      "id": 1571,
+      "title": "Private Investigator Cost 2026: Complete Pricing Guide &#038; What Drives Price",
+      "status": "skipped",
+      "categories": [
+        145,
+        147
+      ]
+    },
+    {
+      "id": 1567,
+      "title": "Legal Private Investigator: Your Complete 2026 Guide to Licensed Professionals",
+      "status": "skipped",
+      "categories": [
+        145,
+        149
+      ]
+    },
+    {
+      "id": 1177,
+      "title": "Cyber Private Investigator for Harassment Cases | 2026 Guide",
+      "status": "skipped",
+      "categories": [
+        146
+      ]
+    },
+    {
+      "id": 1176,
+      "title": "Background Check Investigation: When Basic Checks Fail",
+      "status": "skipped",
+      "categories": [
+        149
+      ]
+    },
+    {
+      "id": 1175,
+      "title": "Infidelity Investigation: Evidence Paths and Next Steps",
+      "status": "skipped",
+      "categories": [
+        144
+      ]
+    },
+    {
+      "id": 1174,
+      "title": "Private Investigator Near Me: How to Choose the Right Local Investigator",
+      "status": "skipped",
+      "categories": [
+        145
+      ]
+    },
+    {
+      "id": 1173,
+      "title": "Private Investigator Cost Guide: What Drives Price in 2026",
+      "status": "skipped",
+      "categories": [
+        147
+      ]
+    },
+    {
+      "id": 1172,
+      "title": "How to Hire a Private Investigator: 12-Step Checklist (2026)",
+      "status": "skipped",
+      "categories": [
+        145
+      ]
+    },
+    {
+      "id": 1144,
+      "title": "How to Check Your Child&#8217;s Phone Without Breaking Trust",
+      "status": "skipped",
+      "categories": [
+        148
+      ]
+    },
+    {
+      "id": 1132,
+      "title": "Should Parents Check Their Child&#8217;s Phone?",
+      "status": "skipped",
+      "categories": [
+        148
+      ]
+    },
+    {
+      "id": 1125,
+      "title": "Private Investigator for Cheating Spouse Cases | Legal, Discreet Evidence",
+      "status": "skipped",
+      "categories": [
+        144
+      ]
+    },
+    {
+      "id": 1119,
+      "title": "Digital Evidence Preservation for Online Harassment | 2026 Checklist",
+      "status": "skipped",
+      "categories": [
+        146
+      ]
+    },
+    {
+      "id": 1110,
+      "title": "Is It Legal to Hire a Private Investigator? Complete 2026 Guide",
+      "status": "skipped",
+      "categories": [
+        149
+      ]
+    },
+    {
+      "id": 346,
+      "title": "Missing Persons Searches",
+      "status": "skipped",
+      "categories": [
+        148
+      ]
+    }
+  ],
+  "categories": {
+    "legal-guides": 150,
+    "pi-services": 151,
+    "investigation-types": 152,
+    "cost-guides": 153,
+    "hiring-guides": 154
+  },
+  "seoPlugin": "rankmath"
+}

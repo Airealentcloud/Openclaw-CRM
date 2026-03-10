@@ -1,0 +1,104 @@
++ hours. Historic settlement dominating business news.</div>
+                <div class="trend-targets">Targets: @allafrica, @NNPCgroup, @BusinessDayNG</div>
+            </div>
+        </div>
+
+        <!-- RECENT UPDATES SECTION -->
+        <div class="section">
+            <div class="section-title">🔄 RECENT UPDATES</div>
+            <div class="update-item">
+                <div class="update-time">5:27 PM • Subagent & Trends Check</div>
+                <div class="update-content">Major ambassadors appointment trending. 30-minute warning for 7:00 PM scam story. Critical issues still pending.</div>
+            </div>
+            
+            <div class="update-item">
+                <div class="update-time">4:30 PM • Nigeria Trends Update</div>
+                <div class="update-content">Oil price surge ($150 prediction), 2026 economic outlook (4.3% GDP), OPL resolution coverage.</div>
+            </div>
+            
+            <div class="update-item">
+                <div class="update-time">4:27 PM • Heartbeat Check</div>
+                <div class="update-content">Critical status update - Article 1 still empty (27+ hours), social posts 18+ hours overdue, evening priorities set.</div>
+            </div>
+            
+            <div class="update-item">
+                <div class="update-time">3:27 PM • Nigeria Trends Update</div>
+                <div class="update-content">Security incidents in Kogi State, investment trends, business standards. Urgent status update.</div>
+            </div>
+            
+            <div class="update-item">
+                <div class="update-time">3:00 PM • Daily Research Report</div>
+                <div class="update-content">12,163-word report delivered: AI verification ready, 20+ hour automation savings, 2026 market timing perfect.</div>
+            </div>
+        </div>
+
+        <!-- QUICK ACTIONS SECTION -->
+        <div class="section">
+            <div class="section-title">⚡ QUICK ACTIONS</div>
+            <div class="project-actions" style="justify-content: center; gap: 15px;">
+                <button class="action-btn primary" onclick="alert('Opening dashboard file...')">📊 View Full Dashboard</button>
+                <button class="action-btn secondary" onclick="alert('Opening memory file...')">🧠 View Today's Memory</button>
+                <button class="action-btn primary" onclick="alert('Opening research report...')">📋 View Research Report</button>
+                <button class="action-btn secondary" onclick="alert('Refreshing mission control...')">🔄 Refresh Data</button>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>CRM Mission Control • Last Updated: March 6, 2026, 5:27 PM</p>
+            <p>System Status: ✅ Operational • Next Check: 6:27 PM</p>
+            <p>Files: <a href="file:///C:/Users/USER/.openclaw/workspace/crm/dashboard.md">dashboard.md</a> • 
+               <a href="file:///C:/Users/USER/.openclaw/workspace/memory/2026-03-06.md">today's memory</a> • 
+               <a href="file:///C:/Users/USER/.openclaw/workspace/crm/">CRM folder</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Simple auto-refresh every 5 minutes
+        setTimeout(() => {
+            location.reload();
+        }, 5 * 60 * 1000); // 5 minutes
+
+        // Update time display
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-US', { 
+                hour: '2-digit', 
+                minute: '2-digit',
+                hour12: true 
+            });
+            document.querySelector('.footer p:first-child').innerHTML = 
+                `CRM Mission Control • Last Updated: March 6, 2026, ${timeString}`;
+        }
+
+        // Update time every minute
+        setInterval(updateTime, 60000);
+        updateTime();
+
+        // Add click handlers for better UX
+        document.querySelectorAll('.action-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 200);
+            });
+        });
+
+        // Add keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            // Ctrl+R to refresh
+            if (e.ctrlKey && e.key === 'r') {
+                e.preventDefault();
+                location.reload();
+            }
+            // Ctrl+D for dashboard
+            if (e.ctrlKey && e.key === 'd') {
+                e.preventDefault();
+                alert('Opening dashboard file...');
+            }
+        });
+
+        console.log('CRM Mission Control loaded successfully');
+    </script>
+</body>
+</html>

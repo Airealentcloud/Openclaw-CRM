@@ -1,0 +1,45 @@
+
+# Google Search Console URL Submission
+
+## New URLs to Submit for Indexing
+
+- https://pathwaypis.com/gps-tracking-laws-private-investigator/
+- https://pathwaypis.com/private-investigator-phone-records-legal/
+
+## Method 1: Manual Submission (Recommended)
+
+1. Go to: https://search.google.com/search-console
+2. Select property: pathwaypis.com
+3. Go to "URL Inspection" tool
+4. Enter each URL and click "Request Indexing"
+
+## Method 2: Sitemap Update
+
+1. Go to: https://search.google.com/search-console
+2. Select property: pathwaypis.com
+3. Go to "Sitemaps"
+4. Resubmit your sitemap URL (e.g., https://pathwaypis.com/sitemap.xml)
+
+## Method 3: Google Indexing API (Requires setup)
+
+For high-priority content, use the Google Indexing API:
+https://developers.google.com/search/apis/indexing-api/v3/quickstart
+
+## URLs Needing Indexing
+
+The following new articles need to be indexed:
+- Article 6: GPS Tracking Laws ($4.50 CPC)
+- Article 7: Phone Records Access ($3.80 CPC)
+
+## Additional SEO Actions
+
+1. Ensure all articles have proper meta titles/descriptions (via RankMath)
+2. Submit sitemap to Bing Webmaster Tools as well
+3. Monitor indexing status in GSC "Coverage" report
+4. Check for any crawl errors
+
+## Expected Timeline
+
+- Google may index within 24-72 hours
+- High-quality content with good internal linking indexes faster
+- Monitor GSC for indexing status

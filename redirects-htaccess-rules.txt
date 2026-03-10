@@ -1,0 +1,31 @@
+# PathwayPIS 301 Redirect Rules
+# Duplicate Content Cleanup - March 9, 2026
+# Implementation: Add these rules to your .htaccess file in the root directory
+
+# Redirect 1: How to Hire a Private Investigator (old → new)
+Redirect 301 /how-to-hire-a-private-investigator-12-step-checklist-2026/ https://pathwaypis.com/how-to-hire-a-private-investigator-12-step-checklist-for-2026/
+
+# Redirect 2: Private Investigator Cost Guide (old → new)
+Redirect 301 /private-investigator-cost-guide-what-drives-price-in-2026/ https://pathwaypis.com/private-investigator-cost-2026-complete-pricing-guide-what-drives-price/
+
+# Redirect 3: Is It Legal to Hire a PI (old → new comprehensive guide)
+Redirect 301 /is-it-legal-to-hire-a-private-investigator-complete-2026-guide/ https://pathwaypis.com/private-investigator-legal-complete-2026-guide-to-laws-licensing-legal-boundaries/
+
+# Alternative using mod_rewrite (if mod_alias is not available)
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# Redirect 1
+RewriteRule ^how-to-hire-a-private-investigator-12-step-checklist-2026/$ https://pathwaypis.com/how-to-hire-a-private-investigator-12-step-checklist-for-2026/ [L,R=301]
+
+# Redirect 2  
+RewriteRule ^private-investigator-cost-guide-what-drives-price-in-2026/$ https://pathwaypis.com/private-investigator-cost-2026-complete-pricing-guide-what-drives-price/ [L,R=301]
+
+# Redirect 3
+RewriteRule ^is-it-legal-to-hire-a-private-investigator-complete-2026-guide/$ https://pathwaypis.com/private-investigator-legal-complete-2026-guide-to-laws-licensing-legal-boundaries/ [L,R=301]
+</IfModule>
+
+# Notes:
+# - These redirects are 301 (permanent) which passes SEO value to the new URLs
+# - After implementing, test each redirect using: curl -I [old-url]
+# - Google will update its index over the next few days/weeks

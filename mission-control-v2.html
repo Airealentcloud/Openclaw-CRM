@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mission Control v2 | A.I Realent</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #334155;
+            --bg-hover: #475569;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --accent-primary: #3b82f6;
+            --accent-secondary: #8b5cf6;
+            --accent-success: #10b981;
+            --accent-warning: #f59e0b;
+            --accent-danger: #ef4444;
+            --accent-info: #06b6d4;
+            --border-color: #475569;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --transition: all 0.2s ease;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #f8fafc;
+            --bg-secondary: #f1f5f9;
+            --bg-card: #ffffff;
+            --bg-hover: #e2e8f0;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            transition: var(--transition);
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-card) 100%);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .brand { display: flex; align-items: center; gap: 0.75rem; }
+        .brand-icon {
+            width: 40px; height: 40px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: var(--radius);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.25rem;
+        }
+        .brand-text h1 {
+            font-size: 1.25rem; font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .brand-text span { font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; }
+
+        .header-actions { display: flex; gap: 0.5rem; align-items: center; }
+
+        .btn-icon {
+            width: 40px; height: 40px;
+            border: none; background: var(--bg-card);
+            color: var(--text-secondary);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: var(--transition);
+        }
+        .btn-icon:hover { background: var(--bg-hover); color: var(--text-primary); }
+
+        .btn-primary {
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            color: white; border: none; border-radius: var(--radius-sm);
+            font-weight: 600; font-size: 0.875rem;
+            cursor: pointer; display: flex; align-items: center; gap: 0.5rem;
+            transition: var(--transition);
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+
+        .status-bar {
+            background: var(--bg-secondary);
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .status-content {
+            max-width: 1400px; margin: 0 auto;
+            display: flex; flex-wrap: wrap; gap: 1rem;
+            align-items: center; justify-content: space-between;
+        }
+        .status-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; }
+        .status-dot { width: 8px; height: 8px; border-radius: 50%; animation: pulse 2s infinite; }
+        .status-dot.success { background: var(--accent-success); }
+        .status-dot.warning { background: var(--accent-warning); }
+        .status-dot.danger { background: var(--accent-danger); }
+        .status-dot.info { background: var(--accent-info); }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        .status-text { color: var(--text-secondary); }
+        .status-text strong { color: var(--text-primary); }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 1rem; }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        @media (min-width: 768px) { .dashboard-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1024px) { .dashboard-grid { grid-template-columns: repeat(4, 1fr); } }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            overflow: hidden;
+        }
+        .card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+        .card-header { padding: 1rem; border-bottom: 1px solid var(--border-color); }
+        .card-title {
+            font-size: 0.875rem; font-weight: 600; color: var(--text-secondary);
+            text-transform: uppercase; letter-spacing: 0.05em;
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+        .card-value { font-size: 2rem; font-weight: 800; color: var(--text-primary); margin-top: 0.5rem; }
+        .card-subtitle { font-size: 0.875rem; color: var(--text-muted); margin-top: 0.25rem; }
+        .card-body { padding: 1rem; }
+        .trend { display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; margin-top: 0.75rem; }
+        .trend.up { color: var(--accent-success); }
+        .trend.down { color: var(--accent-danger); }
+
+        .sections-grid { display: grid; gap: 1rem; }
+        @media (min-width: 1024px) { .sections-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1400px) { .sections-grid { grid-template-columns: repeat(3, 1fr); } }
+
+        .section-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+        .section-header {
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-card));
+            border-bottom: 1px solid var(--border-color);
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .section-title { font-size: 1rem; font-weight: 700; display: flex; align-items: center; gap: 0.5rem; }
+        .section-badge { padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; }
+        .badge-success { background: rgba(16, 185, 129, 0.2); color: var(--accent-success); }
+        .badge-warning { background: rgba(245, 158, 11, 0.2); color: var(--accent-warning); }
+        .badge-danger { background: rgba(239, 68, 68, 0.2); color: var(--accent-danger); }
+        .badge-info { background: rgba(6, 182, 212, 0.2); color: var(--accent-info); }
+        .section-body { padding: 1rem; max-height: 400px; overflow-y: auto; }
+
+        .task-list { display: flex; flex-direction: column; gap: 0.75rem; }
+        .task-item {
+            display: flex; align-items: flex-start; gap: 0.75rem;
+            padding: 0.875rem;
+            background: var(--bg-secondary);
+            border-radius: var(--radius-sm);
+            border-left: 3px solid var(--border-color);
+            transition: var(--transition);
+        }
+        .task-item:hover { background: var(--bg-hover); }
+        .task-item.priority-high { border-left-color: var(--accent-danger); }
+        .task-item.priority-medium { border-left-color: var(--accent-warning); }
+        .task-item.priority-low { border-left-color: var(--accent-success); }
+
+        .task-checkbox {
+            width: 20px; height: 20px;
+            border: 2px solid var(--border-color);
+            border-radius: 4px;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: var(--transition);
+            flex-shrink: 0; margin-top: 2px;
+        }
+        .task-checkbox:hover { border-color: var(--accent-primary); }
+        .task-checkbox.checked {
+            background: var(--accent-success); border-color: var(--accent-success); color: white;
+        }
+        .task-content { flex: 1; }
+        .task-title { font-weight: 600; font-size: 0.9375rem; margin-bottom: 0.25rem; }
+        .task-title.completed { text-decoration: line-through; color: var(--text-muted); }
+        .task-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; font-size: 0.75rem; color: var(--text-muted); }
+        .task-tag { padding: 0.125rem 0.5rem; background: var(--bg-card); border-radius: 4px; }
+
+        .outreach-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 1rem; }
+        .outreach-stat { text-align: center; padding: 1rem; background: var(--bg-secondary); border-radius: var(--radius-sm); }
+        .outreach-number { font-size: 1.75rem; font-weight: 800; }
+        .outreach-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+
+        .progress-bar { height: 8px; background: var(--bg-secondary); border-radius: 9999px; overflow: hidden; margin-top: 1rem; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary)); border-radius: 9999px; transition: width 0.5s ease; }
+
+        .trend-item {
+            display: flex; align-items: center; gap: 1rem;
+            padding: 0.875rem;
+            background: var(--bg-secondary);
+            border-radius: var(--radius-sm);
+            margin-bottom: 0.75rem;
+            transition: var(--transition);
+        }
+        .trend-item:hover { background: var(--bg-hover); }
+        .trend-rank {
+            width: 32px; height: 32px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: var(--radius-sm);
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 0.875rem; flex-shrink: 0;
+        }
+        .trend-rank.top-3 { background: linear-gradient(135deg, #fbbf24, #f59e0b); color: #000; }
+        .trend-info { flex: 1; }
+        .trend-name { font-weight: 600; font-size: 0.9375rem; }
+        .trend-duration { font-size: 0.75rem; color: var(--text-muted); }
+        .trend-action {
+            padding: 0.5rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem; font-weight: 600;
+            cursor: pointer; transition: var(--transition);
+        }
+        .trend-action:hover { background: var(--accent-primary); color: white; border-color: var(--accent-primary); }
+
+        .content-card {
+            display: flex; gap: 1rem; padding: 1rem;
+            background: var(--bg-secondary);
+            border-radius: var(--radius-sm);
+            margin-bottom: 0.75rem;
+            transition: var(--transition);
+        }
+        .content-card:hover { background: var(--bg-hover); }
+        .content-icon {
+            width: 48px; height: 48px; border-radius: var(--radius-sm);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; flex-shrink: 0;
+        }
+        .content-icon.tiktok { background: linear-gradient(135deg, #ff0050, #00f2ea); }
+        .content-icon.youtube { background: linear-gradient(135deg, #ff0000, #cc0000); }
+        .content-icon.linkedin { background: linear-gradient(135deg, #0077b5, #005885); }
+        .content-icon.x { background: linear-gradient(135deg, #1da1f2, #0d8ecf); }
+        .content-info { flex: 1; }
+        .content-title { font-weight: 600; margin-bottom: 0.25rem; }
+        .content-meta { font-size: 0.75rem; color: var(--text-muted); }
+        .content-status {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem; font-weight: 600;
+            align-self: flex-start;
+        }
+
+        .property-item {
+            display: flex; gap: 1rem; padding: 1rem;
+            background: var(--bg-secondary);
+            border-radius: var(--radius-sm);
+            margin-bottom: 0.75rem;
+            border-left: 3px solid var(--accent-primary);
+            transition: var(--transition);
+        }
+        .property-item:hover { background: var(--bg-hover); }
+        .property-thumb {
+            width: 60px; height: 60px;
+            background: var(--bg-card);
+            border-radius: var(--radius-sm);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; flex-shrink: 0;
+        }
+        .property-details { flex: 1; }
+        .property-title { font-weight: 600; margin-bottom: 0.25rem; }
+        .property-location { font-size: 0.75rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.25rem; }
+        .property-price { font-weight: 700; color: var(--accent-success); margin-top: 0.25rem; }
+        .property-status {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem; font-weight: 600;
+            align-self: flex-start;
+        }
+
+        .actions-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+        .action-btn {
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            color: var(--text-primary);
+            font-weight: 600;
+            cursor: pointer;
+            display: flex; flex-direction: column;
+            align-items: center; gap: 0.5rem;
+            transition: var(--transition);
+        }
+        .action-btn:hover { background: var(--bg-hover); transform: translateY(-2px); }
+        .action-btn i { font-size: 1.5rem; color: var(--accent-primary); }
+
+        .update-item {
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-radius: var(--radius-sm);
+            margin-bottom: 0.75rem;
+            border-left: 3px solid var(--accent-info);
+            transition: var(--transition);
+        }
+        .update-item:hover { background: var(--bg-hover); }
+        .update-time { font-size: 0.75rem; color: var(--accent-info); font-weight: 600; margin-bottom: 0.25rem; }
+        .update-content { font-size: 0.875rem; color: var(--text-secondary); }
+
+        .footer {
+            text-align: center; padding: 2rem 1rem; margin-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted); font-size: 0.875rem;
+        }
+        .footer-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem; }
+        .footer-links a { color: var(--accent-primary); text-decoration: none; }
+        .footer-links a:hover { text-decoration: underline; }
+
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-secondary); }
+        ::-webkit-scrollbar-thumb { background: var(--bg-hover); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+        @media print {
+            .header-actions, .btn-primary, .trend-action, .action-btn { display: none !important; }
+            body { background: white !important; color: black !important; }
+            .card, .section-card { break-inside: avoid; box-shadow: none !important; border: 1px solid #ddd !important; }
+        }
+
+        @media (max-width: 640px) {
+            .brand-text span { display: none; }
+            .card-value { font-size: 1.5rem; }
+            .actions-grid, .outreach-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="brand">
+                <div class="brand-icon"><i class="fas fa-rocket"></i></div>
+                <div class="brand-text">
+                    <h1>Mission Control</h1>
+                    <span>A.I Realent CRM</span>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button class="btn-icon" onclick="toggleTheme()" title="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+                <button class="btn-icon" onclick="refreshData()" title="Refresh"><i class="fas fa-sync-alt"></i></button>
+                <button class="btn-icon" onclick="window.print()" title="Print"><i class="fas fa-print"></i></button>
+                <button class="btn-primary" onclick="window.open('dashboard.md', '_blank')"><i class="fas fa-file-alt"></i>View Dashboard</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="status-bar">
+        <div class="status-content">
+            <div class="status-item"><span class="status-dot success"></span><span class="status-text">System <strong>Operational</strong></span></div>
+            <div class="status-item"><span class="status-dot info"></span><span class="status-text">Last Update: <strong id="lastUpdate">Loading...</strong></span></div>
+            <div class="status-item"><span class="status-dot warning"></span><span class="status-text">Next Check: <strong>Auto</strong></span></div>
+            <div class="status-item"><span class="status-dot success"></span><span class="status-text">Subagents: <strong>0 Active</strong></span></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Stats Grid -->
+        <div class="dashboard-grid">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title"><i class="fas fa-envelope"></i>Outreach</div>
+                    <div class="card-value">4</div>
+                    <div class="card-subtitle">Pending Follow-ups</div>
+                </div>
+                <div class="card-body">
+                    <div class="trend up"><i class="fas fa-clock"></i><span>Last batch: Feb 20</span></div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title"><i class="fas fa-file-alt"></i>PathwayPIS</div>
+                    <div class="card-value">4/7</div>
+                    <div class="card-subtitle">Articles Published</div>
+                </div>
+                <div class="card-body">
+                    <div class="trend up"><i class="fas fa-check-circle"></i><span>Article 4 LIVE ✅</span></div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title"><i class="fas fa-home"></i>Properties</div>
+                    <div class="card-value">0</div>
+                    <div class="card-subtitle">Pending Listings</div>
+                </div>
+                <div class="card-body">
+                    <div class="trend up"><i class="fas fa-check-circle"></i><span>All cleared ✅</span></div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title"><i class="fas fa-hashtag"></i>Nigeria Trends</div>
+                    <div class="card-value">5</div>
+                    <div class="card-subtitle">Active Topics</div>
+                </div>
+                <div class="card-body">
+                    <div class="trend up"><i class="fas fa-clock"></i><span>Hourly monitoring</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="sections-grid">
+            <!-- Task Priorities -->
+            <div class="section-card">
+                <div class="section-header">
+                    <div class="section-title"><i class="fas fa-tasks"></i>Task Priorities</div>
+                    <span class="section-badge badge-warning">6 Active</span>
+                </div>
+                <div class="section-body">
+                    <div class="task-list">
+                        <div class="task-item priority-high">
+                            <div class="task-checkbox checked"><i class="fas fa-check"></i></div>
+                            <div class="task-content">
+                                <div class="task-title completed">PathwayPIS Article 4</div>
+                                <div class="task-meta"><span class="task-tag">Content</span><span class="task-tag">Published ✅</span><span>Mar 9, 01:46 AM</span></div>
+                            </div>
+                        </div>
+                        <div class="task-item priority-high">
+                            <div class="task-checkbox" onclick="toggleTask(this)"></div>
+                            <div class="task-content">
+                                <div class="task-title">Enhance Duplicate Articles</div>
+                                <div class="task-meta"><span class="task-tag">SEO</span><span class="task-tag">Pending</span><span>High Priority</span></div>
+                            </div>
+                        </div>
+                        <div class="task-item priority-high">
+                            <div class="task-checkbox" onclick="toggleTask(this)"></div>
+                            <div class="task-content">
+                                <div class="task-title">Update Article 1 Internal Links (3→8)</div>
+                                <div class="task-meta"><span class="task-tag">SEO</span><span class="task-tag">In Progress</span><span>15 articles total</span></div>
+                            </div>
+                        </div>
+                        <div class="task-item priority-medium">
+                            <div class="task-checkbox" onclick="toggleTask(this)"></div>
+                            <div class="task-content">
+                                <div class="task-title">Outreach Follow-ups</div>
+                                <div class="task-meta"><span class="task-tag">Outreach</span><span class="task-tag">Pending</span><span>Feb 20 Batch</span></div>
+                            </div>
+                        </div>
+                        <div class="task-item priority-high">
+                            <div class="task-checkbox" onclick="toggleTask(this)"></div>
+                            <div class="task-content">
+                                <div class="task-title">X Strategy Implementation</div>
+                                <div class="task-meta"><span class="task-tag">Social</span><span class="task-tag">Active</span><span>27K+ words ready</span></div>
+                            </div>
+                        </div>
+                        <div class="task-item priority-medium">
+                            <div class="task-checkbox" onclick="toggleTask(this)"></div>
+                            <div class="task-content">
+                                <div class="task-title">Evolution API (WhatsApp)</div>
+                                <div class="task-meta"><span class="task-tag">Integration</span><span class="task-tag">Research</span><span>Free option</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Outreach Status -->
+            <div class="section-card">
+                <div class="section-header">
+                    <div class="section-title"><i class="fas fa-paper-plane"></i>Outreach Status</div>
+                    <span class="section-badge badge-danger">Pending</span>
+                </div>
+                <div class="section-body">
+                    <div class="outreach-grid">
+                        <div class="outreach-stat">
+                            <div class="outreach-number" style="color: var(--accent-success);">117</div>
+                            <div class="outreach-label">Backlinks Sent</div>
+                        </div>
+                        <div class="outreach-stat">
+                            <div class="outreach-number" style="color: var(--accent-warning);">4</div>
+                            <div class="outreach-label">Pending</div>
+                        </div>
+                        <div class="outreach-stat">
+                            <div class="outreach-number" style="color: var(--accent-info);">55</div>
+                            <div class="outreach-label">Directories</div>
+                        </div>
+                        <div class="outreach-stat">
+                            <div class="outreach-number" style="color: var(--accent-danger);">18+</div>
+                            <div class="outreach-label">Days Stalled</div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 1rem;">
+                        <div style="display: flex; justify-content: space-between; font-size: 0.875rem; margin-bottom: 0.5rem;">
+                            <span>Progress</span>
+                            <span style="color: var(--accent-warning);">Review Needed</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 75%;"></div></div>
+                    </div>
+
+                    <div style="margin-top: 1.5rem; padding: 1rem; background: var(--bg-primary); border-radius: var(--radius-sm);">
+                        <div style="font-weight: 600; margin-bottom: 0.5rem;">📧 Email-Ready Templates</div>
+                        <div style="font-size: 0.875rem; color: var(--text-muted);">
+                            <div style="margin-bottom: 0.5rem;">✅ 100webs Template</div>
+                            <div style="margin-bottom: 0.5rem;">✅ GwriteNM Template</div>
+                            <div>⚠️ Review outreach_batch_2026_02_20.json</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nigeria Trends -->
+            <div class="section-card">
+                <div class="section-header">
+                    <div class="section-title"><i class="fas fa-chart-line"></i>Nigeria Trends</div>
+                    <span class="section-badge badge-success">Live</span>
+                </div>
+                <div class="section-body">
+                    <div class="trend-item">
+                        <div class="trend-rank top-3">1</div>
+                        <div class="trend-info">
+                            <div class="trend-name">#InternationalWomensDay</div>
+                            <div class="trend-duration">24+ hours trending</div>
+                        </div>
+                        <button class="trend-action">Engage</button>
+                    </div>
+
+                    <div class="trend-item">
+                        <div class="trend-rank top-3">2</div>
+                        <div class="trend-info">
+                            <div class="trend-name">#GiveToGain</div>
+                            <div class="trend-duration">21+ hours trending</div>
+                        </div>
+                        <button class="trend-action">Engage</button>
+                    </div>
+
+                    <div class="trend-item">
+                        <div class="trend-rank top-3">3</div>
+                        <div class="trend-info">
+                            <div class="trend-name">#HappyBirthdayTemi</div>
+                            <div class="trend-duration">20+ hours trending</div>
+                        </div>
+                        <button class="trend-action">Engage</button>
+                    </div>
+
+                    <div class="trend-item">
+                        <div class="trend-rank">4</div>
+                        <div class="trend-info">
+                            <div class="trend-name">Adeboye</div>
+                            <div class="trend-duration">#22 trending</div>
+                        </div>
+                        <button class="trend-action">Engage</button>
+                    </div>
+
+                    <div class="trend-item">
+                        <div class="trend-rank">5</div>
+                        <div class="trend-info">
+                            <div class="trend-name">Unilorin</div>
+                            <div class="trend-duration">#26 trending</div>
+                        </div>
+                        <button class="trend-action">Engage</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Content -->
+            <div class="section-card">
+                <div class="section-header">
+                    <div class="section-title"><i class="fas fa-share-alt"></i>Content Pipeline</div>
+                    <span class="section-badge badge-info">Active</span>
+                </div>
+                <div class="section-body">
+                    <div class="content-card">
+                        <div class="content-icon tiktok"><i class="fab fa-tiktok"></i></div>
+                        <div class="content-info">
+                            <div class="content-title">TikTok: Scam POV Series</div>
+                            <div class="content-meta">30-day plan ready • @cokonjo study complete</div>
+                        </div>
+                        <span class="content-status badge-success">Ready</span>
+                    </div>
+
+                    <div class="content-card">
+                        <div class="content-icon youtube"><i class="fab fa-youtube"></i></div>
+                        <div class="content-info">
+                            <div class="content-title">YouTube: Property Tours</div>
+                            <div class="content-meta">Feb plan complete • Jibike Santrum script ready</div>
+                        </div>
+                        <span class="content-status badge-warning">In Progress</span>
+                    </div>
+
+                    <div class="content-card">
+                        <div class="content-icon x"><i class="fab fa-x-twitter"></i></div>
+                        <div class="content-info">
+                            <div class="content-title">X/Twitter Strategy</div>
+                            <div class="content-meta">27K+ words • 5 content pillars • Nigerian context</div>
+                        </div>
+                        <span class="content-status badge-success">Complete</span>
+                    </div>
+
+                    <div class="content-card">
+                        <div class="content-icon linkedin"><i class="fab fa-linkedin"></i></div>
+                        <div class="content-info">
+                            <div class="content-title">LinkedIn: Market Analysis</div>
+                            <div class="content-meta">B2B focus • Developer partnerships</div>
+                        </div>
+                        <span class="content-status badge-info">Active</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Property Listings -->
+            <div class="section-card">
+                <div class="section-header">
+                    <div class="section-title"><i class="fas fa-building"></i>Property Status</div>
+                    <span class="section-badge badge-success">Clear</span>
+                </div>
+                <div class="section-body">
+                    <div style="text-align: center; padding: 2rem; color: var(--text-muted);">
+                        <i class="fas fa-check-circle" style="font-size: 3rem; color: var(--accent-success); margin-bottom: 1rem;"></i>
+                        <div style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">All Listings Cleared</div>
+                        <div style="font-size: 0.875rem;">No pending property tasks. Last updated manually by Israel.</div>
+                    </div>
+
+                    <div style="margin-top: 1rem; padding: 1rem; background: var(--bg-secondary); border-radius: var(--radius-sm);">
+                        <div style="font-weight: 600; margin-bottom: 0.75rem;">🛠️ Automation Ready</div>
+                        <div style="font-size: 0.875rem; color: var(--text-muted);">
+                            <div style="margin-bottom: 0.5rem;">✅ CSV → Markdown Generator Built</div>
+                            <div style="margin-bottom: 0.5rem;">✅ SEO-ready Templates Ready</div>
+                            <div>📍 Location: automation/listing_generator/</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="section-card">
+                <div class="section-header">
+                    <div class="section-title"><i class="fas fa-bolt"></i>Quick Actions</div>
+                    <span class="section-badge badge-info">Tools</span>
+                </div>
+                <div class="section-body">
+                    <div class="actions-grid">
+                        <button class="action-btn" onclick="window.open('dashboard.md', '_blank')">
+                            <i class="fas fa-file-alt"></i>
+                            <span>Dashboard</span>
+                        </button>
+
+                        <button class="action-btn" onclick="refreshData()">
+                            <i class="fas fa-sync-alt"></i>
+                            <span>Refresh</span>
+                        </button>
+
+                        <button class="action-btn" onclick="window.open('https://github.com/Airealentcloud/Openclaw-CRM', '_blank')">
+                            <i class="fab fa-github"></i>
+                            <span>GitHub</span>
+                        </button>
+
+                        <button class="action-btn" onclick="window.open('https://pathwaypis.com', '_blank')">
+                            <i class="fas fa-globe"></i>
+                            <span>PathwayPIS</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Updates -->
+        <div class="section-card" style="margin-top: 1rem;">
+            <div class="section-header">
+                <div class="section-title"><i class="fas fa-history"></i>Recent Updates</div>
+                <span class="section-badge badge-info">Live</span>
+            </div>
+            <div class="section-body">
+                <div class="update-item">
+                    <div class="update-time">March 9, 2026 • 2:50 AM</div>
+                    <div class="update-content">✅ Article 4 published successfully (Post ID: 1582) - "Private Investigator Legal: Complete 2026 Guide"</div>
+                </div>
+
+                <div class="update-item">
+                    <div class="update-time">March 9, 2026 • 2:50 AM</div>
+                    <div class="update-content">🎯 Next focus: Enhance duplicate articles, update Article 1 with 8 internal links, fix linking across all 15 articles</div>
+                </div>
+
+                <div class="update-item">
+                    <div class="update-time">March 9, 2026 • 2:50 AM</div>
+                    <div class="update-content">📊 Nigeria Trends updated: #InternationalWomensDay, #GiveToGain, #HappyBirthdayTemi trending for engagement</div>
+                </div>
+
+                <div class="update-item">
+                    <div class="update-time">March 6, 2026 • 5:27 PM</div>
+                    <div class="update-content">⚡ CRM Mission Control UI queued - Mobile-friendly dashboard design requested</div>
+                </div>
+
+                <div class="update-item">
+                    <div class="update-time">March 5, 2026</div>
+                    <div class="update-content">✅ PathwayPIS quality approach set: 1-2 articles/day, 1,200-1,500 words, target $7+ CPC keywords</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="dashboard.md">Dashboard.md</a>
+            <a href="https://github.com/Airealentcloud/Openclaw-CRM">GitHub Repo</a>
+            <a href="https://pathwaypis.com">PathwayPIS</a>
+            <a href="../../memory/">Memory</a>
+        </div>
+        <p>CRM Mission Control v2.0 • A.I Realent</p>
+        <p>Built with 💙 for Israel</p>
+    </footer>
+
+    <script>
+        // Theme Toggle
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+
+        // Task Toggle
+        function toggleTask(checkbox) {
+            checkbox.classList.toggle('checked');
+            if (checkbox.classList.contains('checked')) {
+                checkbox.innerHTML = '<i class="fas fa-check"></i>';
+                checkbox.nextElementSibling.querySelector('.task-title').classList.add('completed');
+            } else {
+                checkbox.innerHTML = '';
+                checkbox.nextElementSibling.querySelector('.task-title').classList.remove('completed');
+            }
+        }
+
+        // Refresh Data
+        function refreshData() {
+            const btn = document.querySelector('.btn-icon[onclick="refreshData()"] i');
+            btn.classList.add('fa-spin');
+            setTimeout(() => {
+                btn.classList.remove('fa-spin');
+                location.reload();
+            }, 1000);
+        }
+
+        // Update timestamp
+        function updateTime() {
+            const now = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+            document.getElementById('lastUpdate').textContent = now.toLocaleDateString('en-US', options);
+        }
+        updateTime();
+
+        // Auto-refresh every 5 minutes
+        setInterval(() => {
+            location.reload();
+        }, 5 * 60 * 1000);
+
+        console.log('🚀 Mission Control v2.0 loaded successfully');
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+# PathwayPIS Redirect Configuration
+# Generated: 2026-03-09T22:53:09.904Z
+# Total Redirects: 3
+
+## .htaccess Format ##
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+RewriteRule ^how-to-hire-a-private-investigator-12-step-checklist-2026/?$ https://pathwaypis.com/how-to-hire-a-private-investigator-12-step-checklist-for-2026/ [L,R=301]
+RewriteRule ^private-investigator-cost-guide-what-drives-price-in-2026/?$ https://pathwaypis.com/private-investigator-cost-2026-complete-pricing-guide-what-drives-price/ [L,R=301]
+RewriteRule ^is-it-legal-to-hire-a-private-investigator-complete-2026-guide/?$ https://pathwaypis.com/private-investigator-legal-complete-2026-guide-to-laws-licensing-legal-boundaries/ [L,R=301]
+
+</IfModule>
+
+## Redirection Plugin JSON ##
+[
+  {
+    "url": "/how-to-hire-a-private-investigator-12-step-checklist-2026/",
+    "action_data": {
+      "url": "https://pathwaypis.com/how-to-hire-a-private-investigator-12-step-checklist-for-2026/"
+    },
+    "regex": false,
+    "match_type": "url",
+    "action_type": "url",
+    "status": "enabled"
+  },
+  {
+    "url": "/private-investigator-cost-guide-what-drives-price-in-2026/",
+    "action_data": {
+      "url": "https://pathwaypis.com/private-investigator-cost-2026-complete-pricing-guide-what-drives-price/"
+    },
+    "regex": false,
+    "match_type": "url",
+    "action_type": "url",
+    "status": "enabled"
+  },
+  {
+    "url": "/is-it-legal-to-hire-a-private-investigator-complete-2026-guide/",
+    "action_data": {
+      "url": "https://pathwaypis.com/private-investigator-legal-complete-2026-guide-to-laws-licensing-legal-boundaries/"
+    },
+    "regex": false,
+    "match_type": "url",
+    "action_type": "url",
+    "status": "enabled"
+  }
+]
+
+## CSV Format (for bulk import) ##
+Source URL,Target URL,Regex,Type
+/how-to-hire-a-private-investigator-12-step-checklist-2026/,https://pathwaypis.com/how-to-hire-a-private-investigator-12-step-checklist-for-2026/,false,301
+/private-investigator-cost-guide-what-drives-price-in-2026/,https://pathwaypis.com/private-investigator-cost-2026-complete-pricing-guide-what-drives-price/,false,301
+/is-it-legal-to-hire-a-private-investigator-complete-2026-guide/,https://pathwaypis.com/private-investigator-legal-complete-2026-guide-to-laws-licensing-legal-boundaries/,false,301

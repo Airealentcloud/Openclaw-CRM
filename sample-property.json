@@ -1,0 +1,25 @@
+{
+  "title": "4 Bedroom Terrace Duplex with BQ - Jahi, Abuja",
+  "type": "Terrace Duplex",
+  "location": "Jahi",
+  "price": 350000000,
+  "bedrooms": 4,
+  "bathrooms": 4,
+  "size": "500",
+  "sizeUnit": "sqm",
+  "status": "For Sale",
+  "propertyId": "PROP-JAHI-001",
+  "features": [
+    "Guest Toilet",
+    "Dining Area",
+    "Balconies",
+    "Fitted Kitchen",
+    "Store",
+    "En-suite",
+    "Wardrobe",
+    "Ample Parking",
+    "Green Area"
+  ],
+  "address": "Jahi District, Abuja, Nigeria",
+  "notes": "This is a sample property for testing the automation script."
+}
