@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <!-- Background -->
+  <rect width="1200" height="675" fill="#0a0a0f"/>
+  
+  <!-- Grid pattern -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1a1a2e" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="675" fill="url(#grid)"/>
+  
+  <!-- Main content area -->
+  <rect x="100" y="100" width="1000" height="475" rx="20" fill="#12121a" stroke="#2a2a3e" stroke-width="2"/>
+  
+  <!-- 93% Circle (large, faded) -->
+  <circle cx="350" cy="337" r="120" fill="none" stroke="#3a3a4e" stroke-width="3" opacity="0.5"/>
+  <text x="350" y="320" text-anchor="middle" fill="#6a6a7e" font-family="system-ui, sans-serif" font-size="72" font-weight="bold">93%</text>
+  <text x="350" y="370" text-anchor="middle" fill="#4a4a5e" font-family="system-ui, sans-serif" font-size="18">SAY THEY USE AI</text>
+  
+  <!-- 7% Circle (small, highlighted) -->
+  <circle cx="750" cy="337" r="80" fill="none" stroke="#00d4ff" stroke-width="4"/>
+  <circle cx="750" cy="337" r="80" fill="#00d4ff" opacity="0.1"/>
+  <text x="750" y="330" text-anchor="middle" fill="#00d4ff" font-family="system-ui, sans-serif" font-size="56" font-weight="bold">7%</text>
+  <text x="750" y="365" text-anchor="middle" fill="#00d4ff" font-family="system-ui, sans-serif" font-size="14" opacity="0.8">ACTUALLY DO</text>
+  
+  <!-- Divider -->
+  <line x1="600" y1="200" x2="600" y2="475" stroke="#2a2a3e" stroke-width="2"/>
+  
+  <!-- Header -->
+  <text x="600" y="60" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="28" font-weight="bold">THE AI GAP IN REAL ESTATE</text>
+  <text x="600" y="85" text-anchor="middle" fill="#6a6a7e" font-family="system-ui, sans-serif" font-size="16">Nigeria 2026 • A.I Realent Research</text>
+  
+  <!-- Bottom tag -->
+  <text x="600" y="620" text-anchor="middle" fill="#4a4a5e" font-family="system-ui, sans-serif" font-size="14">The gap between talking and doing is where opportunity lives</text>
+  
+  <!-- Decorative elements -->
+  <circle cx="150" cy="150" r="4" fill="#00d4ff" opacity="0.6"/>
+  <circle cx="1050" cy="525" r="4" fill="#00d4ff" opacity="0.6"/>
+  <circle cx="200" cy="550" r="2" fill="#6a6a7e" opacity="0.4"/>
+  <circle cx="1000" cy="180" r="2" fill="#6a6a7e" opacity="0.4"/>
+</svg>

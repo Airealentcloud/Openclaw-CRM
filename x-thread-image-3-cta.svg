@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <!-- Background -->
+  <rect width="1200" height="675" fill="#0a0a0f"/>
+  
+  <!-- Grid pattern -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1a1a2e" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00d4ff"/>
+      <stop offset="100%" stop-color="#0099cc"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#grid)"/>
+  
+  <!-- Main quote card -->
+  <rect x="150" y="120" width="900" height="435" rx="16" fill="#12121a" stroke="#2a2a3e" stroke-width="2"/>
+  
+  <!-- Quote marks -->
+  <text x="200" y="220" fill="#00d4ff" font-family="Georgia, serif" font-size="120" opacity="0.3">"</text>
+  
+  <!-- Main text -->
+  <text x="600" y="240" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="32" font-weight="bold">If you're buying property in Abuja</text>
+  <text x="600" y="290" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="32" font-weight="bold">in 2026, you have two options:</text>
+  
+  <!-- Option 1 -->
+  <circle cx="350" cy="380" r="30" fill="#3a3a4e"/>
+  <text x="350" y="390" text-anchor="middle" fill="#6a6a7e" font-family="system-ui, sans-serif" font-size="20" font-weight="bold">1</text>
+  
+  <text x="500" y="375" text-anchor="middle" fill="#6a6a7e" font-family="system-ui, sans-serif" font-size="20">Hope your agent did their homework</text>
+  <text x="500" y="405" text-anchor="middle" fill="#4a4a5e" font-family="system-ui, sans-serif" font-size="14">(The way it's always been done)</text>
+  
+  <!-- Divider -->
+  <line x1="300" y1="440" x2="900" y2="440" stroke="#2a2a3e" stroke-width="1" stroke-dasharray="5,5"/>
+  
+  <!-- Option 2 -->
+  <circle cx="350" cy="490" r="30" fill="#00d4ff" opacity="0.2"/>
+  <circle cx="350" cy="490" r="30" fill="none" stroke="#00d4ff" stroke-width="2"/>
+  <text x="350" y="500" text-anchor="middle" fill="#00d4ff" font-family="system-ui, sans-serif" font-size="20" font-weight="bold">2</text>
+  
+  <text x="500" y="485" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="20" font-weight="bold">Work with someone who verifies</text>
+  <text x="500" y="510" text-anchor="middle" fill="#00d4ff" font-family="system-ui, sans-serif" font-size="20" font-weight="bold">with AI + human expertise</text>
+  
+  <!-- CTA Button -->
+  <rect x="450" y="580" width="300" height="50" rx="25" fill="url(#accent)"/>
+  <text x="600" y="612" text-anchor="middle" fill="#0a0a0f" font-family="system-ui, sans-serif" font-size="16" font-weight="bold">DM "VERIFY" TO GET STARTED</text>
+  
+  <!-- Brand -->
+  <text x="600" y="660" text-anchor="middle" fill="#4a4a5e" font-family="system-ui, sans-serif" font-size="12">A.I Realent • Abuja's AI-Powered Real Estate Verification</text>
+  
+  <!-- Decorative elements -->
+  <circle cx="100" cy="100" r="3" fill="#00d4ff" opacity="0.5"/>
+  <circle cx="1100" cy="575" r="3" fill="#00d4ff" opacity="0.5"/>
+  <circle cx="120" cy="550" r="2" fill="#6a6a7e" opacity="0.3"/>
+  <circle cx="1080" cy="150" r="2" fill="#6a6a7e" opacity="0.3"/>
+</svg>
