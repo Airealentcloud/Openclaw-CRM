@@ -39,7 +39,33 @@
 
 ---
 
-### 🇳🇬 NIGERIA TRENDS (4:35 AM CHECK - 1-HOUR TREND PING):
+### 🇳🇬 NIGERIA TRENDS (5:35 AM CHECK - 1-HOUR TREND PING):
+
+**Top 3 Trending Topics for Engagement:**
+
+**1. UK-Nigeria Investment Deals** — Major economic news
+- **Key Insight:** UK and Nigeria concluded major investment agreements ahead of President Tinubu's state visit (March 18)
+- **Engagement Targets:** @VanguardNGR, @BusinessDayNg, @Nairametrics, investment accounts
+- **Comment Strategy:** Connect foreign investment confidence to Abuja real estate opportunities
+- **Sample Comment:** "UK-Nigeria investment deals trending. Foreign investors see opportunity in Nigeria. Verified Abuja real estate offers the same growth potential with FCDA-approved security. #NigeriaInvestment #AbujaProperty"
+
+**2. Lagos Property Market 2026** — Real estate news
+- **Key Insight:** Lagos property prices increased 15% across prime locations in 2026
+- **Engagement Targets:** @NaijaHouses, @NigeriaProperty, @DirichiProperties, real estate accounts
+- **Comment Strategy:** Position Abuja as alternative with similar growth but better value
+- **Sample Comment:** "Lagos prices up 15% in 2026. Smart investors are looking at Abuja — similar appreciation potential, better value per square meter, FCDA-approved lands. #AbujaRealEstate #PropertyInvestment"
+
+**3. Nigeria Real Estate Market 2026** — Economic trends
+- **Key Insight:** Market shaped by high inflation and elevated interest rates; investors seeking "smart money" value-add segments
+- **Engagement Targets:** @Nairametrics, @BusinessDayNg, investment accounts
+- **Comment Strategy:** Position verified real estate as inflation hedge
+- **Sample Comment:** "Nigeria real estate 2026: High inflation drives smart investors to verified assets. FCDA-approved Abuja properties retain value when currency fluctuates. #InflationHedge #AbujaProperty"
+
+**Immediate Early Morning Engagement Actions (Next 60 minutes):**
+1. **Investment Confidence:** Engage with UK-Nigeria deal discussions, position Abuja as investment destination
+2. **Market Comparison:** Compare Lagos 15% growth to Abuja opportunities
+3. **Inflation Hedge:** Connect real estate trends to verified property value retention
+4. **Wednesday Momentum:** Start mid-week with strategic engagement on investment topics
 
 **Top 3 Trending Topics for Engagement:**
 
