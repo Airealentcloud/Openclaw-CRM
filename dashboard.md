@@ -40,7 +40,35 @@
 
 ---
 
-### 🇳🇬 NIGERIA TRENDS (8:17 AM CHECK - 1-HOUR TREND PING):
+### 🇳🇬 NIGERIA TRENDS (9:17 AM CHECK - 1-HOUR TREND PING):
+
+**Top 3 Trending Topics for Engagement:**
+
+**1. Tinubu Orders Political Appointees to Resign** — Political news (continuing)
+- **Key Insight:** President Tinubu directs political appointees seeking 2027 election positions to resign by March 31, 2026
+- **Engagement Targets:** @DailyPostNGR, @VanguardNGR, political accounts
+- **Comment Strategy:** Connect political transitions to stable property investment timing
+- **Sample Comment:** "Political season approaching. Smart investors know: verified real estate in Abuja holds value regardless of political cycles. FCDA-approved lands = stability. #AbujaProperty #StableInvestment"
+
+**2. Soludo Begins Second Term** — Governance news (continuing)
+- **Key Insight:** Anambra Governor Soludo sworn in for second term, calls for strategic alliances for South-East development
+- **Engagement Targets:** @PunchNigeria, @NaijaNews, governance accounts
+- **Comment Strategy:** Link regional development to property market growth
+- **Sample Comment:** "Soludo's second term focusing on South-East development. Regional growth drives property appreciation. Similar potential in Abuja's emerging districts. #NigeriaDevelopment #RealEstate"
+
+**3. Lassa Fever Outbreak** — Health news (continuing)
+- **Key Insight:** Nigeria records 109 deaths from Lassa fever in 2026
+- **Engagement Targets:** @TVCNews, @NCDCgov, health accounts
+- **Comment Strategy:** Pivot to health infrastructure importance for property values
+- **Sample Comment:** "Health infrastructure matters for property investment. Abuja's FCT healthcare system is a key factor in its premium property market. #Abuja #HealthyLiving"
+
+**Immediate Late Morning Engagement Actions (Next 60 minutes):**
+1. **Political Stability:** Continue engaging with Tinubu resignation news
+2. **Governance Focus:** Connect Soludo's development agenda to property growth
+3. **Health Infrastructure:** Use health news to highlight Abuja's advantages
+4. **Late Morning Push:** 9-10 AM is strong engagement time for business content
+
+**Trends Status:** Consistent with 8:17 AM check - no major new trends emerging
 
 **Top 3 Trending Topics for Engagement:**
 
