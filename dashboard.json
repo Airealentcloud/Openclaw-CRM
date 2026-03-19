@@ -1,13 +1,14 @@
 {
-  "lastUpdated": "2026-03-19T09:06:00Z",
+  "lastUpdated": "2026-03-19T09:36:00Z",
   "subagents": {
     "active": 0,
-    "recent": 0
+    "recent": 0,
+    "status": "No active or recent subagents in the last 60 minutes"
   },
   "nigeriaTrends": {
     "headlines": [
       "VP Shettima visits bomb blast victims in Borno",
-      "Eid al-Fitr 2026 announced for March 20",
+      "Eid al-Fitr 2026 announced for March 20 (tomorrow)",
       "Super Eagles coach announces 23-man squad",
       "Ramadan and Lent overlapping (first time since 1993)"
     ],
@@ -15,7 +16,8 @@
       "Eid al-Fitr tomorrow - major cultural moment for content",
       "Super Eagles tournament - sports content opportunity",
       "Ramadan/Lent overlap - interfaith unity angle"
-    ]
+    ],
+    "sources": ["Naija News", "Legit.ng", "Sahara Reporters", "Punch NG"]
   },
-  "notes": "CRM dashboard created during heartbeat check-in"
+  "notes": "Updated during 30-minute heartbeat check-in"
 }
