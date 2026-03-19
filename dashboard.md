@@ -6,7 +6,7 @@
 **Subagent Check:** ✅ No active subagents (verified at 2:01 PM)
 **Scheduled Check:** ✅ 2:01 PM heartbeat processed
 **Dashboard Update:** ✅ Updated with latest status
-**Nigeria Trends:** ✅ Fresh search completed (March 19, 2026 - 11:36 AM)
+**Nigeria Trends:** ✅ Fresh search completed (March 19, 2026 - 2:03 PM)
 **GitHub Push:** ✅ Completed at 2:03 PM (commit 4438d61)
 
 ---
@@ -14,7 +14,7 @@
 ## 🔧 TECHNICAL STATUS:
 - ✅ No active subagents running (verified at 2:01 PM)
 - ✅ Dashboard updated with 2:01 PM check-in
-- ✅ Nigeria trends search completed (fresh results for March 19)
+- ✅ Nigeria trends search completed (fresh results for March 19 - 2:03 PM)
 - ✅ GitHub push completed (commit 4438d61)
 - ✅ Mission Control UI running (port 3000)
 
@@ -43,48 +43,34 @@
 
 ---
 
-### 🇳🇬 NIGERIA TRENDS (March 19, 2026 - 11:36 AM CHECK):
+### 🇳🇬 NIGERIA TRENDS (March 19, 2026 - 2:03 PM CHECK):
 
 **Top Trending Topics for Engagement:**
 
-**1. Eid al-Fitr 2026 Announcement** - Religious/Cultural news
-- **Key Insight:** Nigeria officially announced Eid al-Fitr will be observed Friday, March 20, 2026
+**1. Eid al-Fitr 2026 Officially Confirmed** - Religious/Cultural news
+- **Key Insight:** Sultan of Sokoto declared Friday, March 20, 2026 as Eid al-Fitr after moon not sighted
 - **Engagement Targets:** Religious communities, diaspora networks, cultural discussions
-- **Comment Strategy:** Connect Eid celebrations to property investment planning and gifts
-- **Sample Comment:** "Eid al-Fitr tomorrow! As we celebrate, consider giving your family a gift that appreciates - verified Abuja real estate. Property ownership is a blessing that lasts generations. #EidMubarak #AbujaProperty"
+- **Comment Strategy:** Connect Eid celebrations to property investment planning and meaningful gifts
+- **Sample Comment:** "Eid al-Fitr tomorrow! As we celebrate with family, consider a gift that appreciates - verified Abuja real estate. Property ownership is a blessing that lasts generations. #EidMubarak #AbujaProperty"
 
-**2. Shettima Visits** - Political news
-- **Key Insight:** Vice President Shettima making official visits (headlines from Naija News)
-- **Engagement Targets:** Political accounts, governance discussions
-- **Comment Strategy:** Connect political stability to investment confidence
-- **Sample Comment:** "Political leadership active across Nigeria. Stable governance in Abuja's FCT creates reliable property appreciation regardless of political cycles. #StableInvestment #Abuja"
+**2. President Tinubu's Historic UK State Visit** - Political/Diplomatic news
+- **Key Insight:** Tinubu received ceremonial welcome at Windsor Castle by King Charles (first Nigerian state visit in 37 years)
+- **Engagement Targets:** Political accounts, diaspora discussions, business news
+- **Comment Strategy:** Connect international diplomacy to investment confidence and diaspora engagement
+- **Sample Comment:** "Historic UK state visit by President Tinubu - first in 37 years! International partnerships strengthen Nigeria's global standing. For diaspora Nigerians, verified Abuja property keeps you connected to home. #NigeriaUK #DiasporaInvestment"
 
-**3. Ramadan/Lent Overlap** - Cultural/Religious phenomenon
-- **Key Insight:** First overlap since 1993, couples observing both traditions together
-- **Engagement Targets:** Interfaith communities, cultural discussions
-- **Comment Strategy:** Connect unity and shared values to ethical real estate practices
-- **Sample Comment:** "Ramadan and Lent overlapping - a beautiful display of unity. Ethical, transparent real estate practices unite all communities. Verified properties for all. #Unity #EthicalWealth"
-
-**4. Kano State N310 Billion Infrastructure Investment** - Economic development
-- **Key Insight:** Kano approves massive spending on infrastructure, education, healthcare
-- **Engagement Targets:** Economic analysts, regional development accounts
-- **Comment Strategy:** Connect regional infrastructure spending to property market growth
-- **Sample Comment:** "Kano's N310B infrastructure investment shows Nigeria's growth trajectory. Regional development drives property appreciation nationwide. Abuja remains the premium destination. #NigeriaGrowth #RealEstate"
-
-**5. Presidential Amnesty Programme** - Education/Social news
-- **Key Insight:** 8,000 Nigerians studying in-country, 220 in UK under PAP
-- **Engagement Targets:** Education accounts, diaspora discussions
-- **Comment Strategy:** Target educated diaspora with investment opportunities back home
-- **Sample Comment:** "8,000 Nigerians advancing their education. For those abroad, verified Abuja real estate offers a tangible connection back home that appreciates. #DiasporaInvestment #Abuja"
+**3. NSIA $496 Million UK Dairy Farming Deal** - Economic/Business news
+- **Key Insight:** Nigeria Sovereign Investment Authority sealed major agricultural investment deal with UK firm
+- **Engagement Targets:** Business analysts, agricultural investors, economic development accounts
+- **Comment Strategy:** Connect agricultural investment to broader property market growth
+- **Sample Comment:** "NSIA's $496M dairy deal shows Nigeria's agricultural potential. Diversified investments - from farms to real estate - build lasting wealth. Abuja's FCT-approved lands offer similar security. #NigeriaGrowth #SmartInvestment"
 
 ---
 
 ### 🎯 IMMEDIATE ENGAGEMENT ACTIONS (Next 60 minutes):
-1. **Eid Preparation:** Engage with Eid al-Fitr trending discussions - position property as meaningful gift
-2. **Political Stability:** Comment on Shettima visit news - Abuja as stable investment haven
-3. **Unity Messaging:** Connect Ramadan/Lent overlap to inclusive real estate services
-4. **Regional Growth:** Use Kano infrastructure news to highlight nationwide property growth
-5. **Diaspora Target:** Engage with education/amnesty discussions targeting Nigerians abroad
+1. **Eid al-Fitr:** Engage with Eid discussions - position property as meaningful gift for families
+2. **Tinubu UK Visit:** Comment on state visit news - connect to diaspora investment confidence
+3. **NSIA Deal:** Engage with business/agricultural investment discussions - diversified wealth building
 
 ---
 
