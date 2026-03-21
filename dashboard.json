@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-19T09:36:00Z",
+  "lastUpdated": "2026-03-19T21:46:00Z",
   "subagents": {
     "active": 0,
     "recent": 0,
@@ -7,17 +7,22 @@
   },
   "nigeriaTrends": {
     "headlines": [
-      "VP Shettima visits bomb blast victims in Borno",
-      "Eid al-Fitr 2026 announced for March 20 (tomorrow)",
-      "Super Eagles coach announces 23-man squad",
-      "Ramadan and Lent overlapping (first time since 1993)"
+      "Top Nigerian newspaper headlines for Thursday, March 19, 2026",
+      "VP Shettima visits (per Naija News)",
+      "Eid al-Fitr 2026 officially announced for Friday, March 20",
+      "Ramadan and Lent overlapping (first time since 1993)",
+      "Nigeria Sovereign Investment Authority signs MoU for dairy production",
+      "Federal Government accuses Jupiter Ltd of 'campaign of calumny' ahead of Tinubu's UK visit",
+      "Nigeria's lack of strategic oil reserves highlighted as vulnerability"
     ],
     "engagementOpportunities": [
-      "Eid al-Fitr tomorrow - major cultural moment for content",
-      "Super Eagles tournament - sports content opportunity",
-      "Ramadan/Lent overlap - interfaith unity angle"
+      "Eid al-Fitr is TOMORROW (March 20) - major cultural/religious content opportunity",
+      "Ramadan/Lent overlap - interfaith unity angle (unique 1993 occurrence)",
+      "Agriculture investment news - business/finance content angle",
+      "Diplomatic tensions ahead of UK state visit - political commentary",
+      "Energy security issues - oil reserves vulnerability story"
     ],
-    "sources": ["Naija News", "Legit.ng", "Sahara Reporters", "Punch NG"]
+    "sources": ["Naija News", "Punch NG", "Legit.ng", "BBC Nigeria", "TVC News"]
   },
-  "notes": "Updated during 30-minute heartbeat check-in"
+  "notes": "Updated during 30-minute heartbeat check-in at 10:46 PM WAT"
 }
