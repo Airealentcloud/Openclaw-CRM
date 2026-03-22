@@ -177,10 +177,29 @@
 
 ---
 
-**Next Heartbeat:** As scheduled
-**Next Trend Check:** As scheduled
-**Immediate Action:** Review expired domain opportunities report
+### 📋 3:11 AM EXPIRED DOMAIN HUNT SETUP:
+- **Request:** Daily Nigerian domain hunting with news backlinks (Punch, Vanguard, Guardian)
+- **Budget:** Under $50 per domain
+- **Deliverables:**
+  1. ✅ Created `daily-domain-hunt-march-22-2026.md` - Complete hunting guide
+  2. ✅ Updated MEMORY.md with domain hunting parameters
+  3. ✅ Set up daily cron job (8 AM WAT) for automated domain search
+- **Target TLDs:** .com, .com.ng, .ng
+- **Target Backlinks:** Punch, Vanguard, Guardian, BusinessDay, African Business
+- **Daily Sources:**
+  - ExpiredDomains.net (.ng TLD)
+  - GoDaddy Auctions (Nigeria keywords)
+  - Dynadot Auctions
+- **Cron Job ID:** 006d7def-d9b4-470f-81da-e1dadbba58aa
+- **Next Hunt:** March 22, 2026 at 8:00 AM WAT
+- **Status:** ACTIVE - Will deliver top 10 domains daily
 
 ---
 
-*Dashboard updated: Sunday, March 22, 2026 - 3:02 AM WAT*
+**Next Heartbeat:** As scheduled
+**Next Trend Check:** As scheduled
+**Immediate Action:** Set up ExpiredDomains.net and GoDaddy Auctions accounts
+
+---
+
+*Dashboard updated: Sunday, March 22, 2026 - 3:11 AM WAT*
