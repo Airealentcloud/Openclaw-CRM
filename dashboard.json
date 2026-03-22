@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-19T21:46:00Z",
+  "lastUpdated": "2026-03-22T02:37:00Z",
   "subagents": {
     "active": 0,
     "recent": 0,
@@ -7,22 +7,23 @@
   },
   "nigeriaTrends": {
     "headlines": [
-      "Top Nigerian newspaper headlines for Thursday, March 19, 2026",
-      "VP Shettima visits (per Naija News)",
-      "Eid al-Fitr 2026 officially announced for Friday, March 20",
-      "Ramadan and Lent overlapping (first time since 1993)",
-      "Nigeria Sovereign Investment Authority signs MoU for dairy production",
-      "Federal Government accuses Jupiter Ltd of 'campaign of calumny' ahead of Tinubu's UK visit",
-      "Nigeria's lack of strategic oil reserves highlighted as vulnerability"
+      "US military deploys MQ-9 drones and 200 troops to Nigeria for intelligence and training support (Reuters)",
+      "Nigerian Army recovered 74 terrorist bodies following intensified 'Operation Hadin Kai' operations",
+      "Two remaining cocoa farmers abducted from CRIN Ibadan have been rescued",
+      "Residents fleeing Odonget community in Cross River State raise alarm over humanitarian crisis",
+      "Nigeria maintains one of the lowest petrol prices globally despite Middle East tensions",
+      "FCT polls: AMAC APGA candidate congratulates Maikalangu on victory",
+      "Late Prophet TB Joshua's throwback video on Israel-Iran conflict projection trending"
     ],
     "engagementOpportunities": [
-      "Eid al-Fitr is TOMORROW (March 20) - major cultural/religious content opportunity",
-      "Ramadan/Lent overlap - interfaith unity angle (unique 1993 occurrence)",
-      "Agriculture investment news - business/finance content angle",
-      "Diplomatic tensions ahead of UK state visit - political commentary",
-      "Energy security issues - oil reserves vulnerability story"
+      "US-Nigeria military cooperation - defense/security content angle",
+      "Cocoa farmers rescue - agriculture/security success story",
+      "Cross River humanitarian crisis - human rights/investigative angle",
+      "Fuel subsidy/petrol pricing - economic analysis content",
+      "FCT local elections - political commentary opportunity",
+      "TB Joshua prophecy video - religious/viral content angle"
     ],
-    "sources": ["Naija News", "Punch NG", "Legit.ng", "BBC Nigeria", "TVC News"]
+    "sources": ["Reuters", "Punch NG", "Nigerian Eye", "The Guardian NG", "THISDAY", "Legit.ng", "Blueprint"]
   },
-  "notes": "Updated during 30-minute heartbeat check-in at 10:46 PM WAT"
+  "notes": "Updated during 30-minute heartbeat check-in at 3:37 AM WAT (Sunday, March 22, 2026)"
 }
