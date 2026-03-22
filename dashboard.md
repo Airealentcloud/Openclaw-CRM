@@ -161,10 +161,26 @@
 
 ---
 
-**Next Heartbeat:** As scheduled
-**Next Trend Check:** As scheduled
-**Immediate Action:** Review daily research report on AI lead generation
+### 📋 3:02 AM EXPIRED DOMAIN UPDATE:
+- **Request:** Expired domain search for backlinks
+- **Deliverable:** Created `expired-domain-opportunities-march-22-2026.md`
+- **Key Sources:**
+  - ExpiredDomains.net (free .ng monitoring)
+  - GoDaddy Auctions (search: "abuja property", "lagos land")
+  - Dynadot Auctions (filter by backlinks/age)
+  - SEO.Domains (premium marketplace)
+- **Target Profiles:**
+  - For housesforsaleinabuja.com: `abujahouses.com`, `abujahomes.ng` (DA 20+, 30+ RD)
+  - For landforsaleinabuja.com: `abujaland.com`, `nigerialand.ng` (DA 20+, 30+ RD)
+  - For airealent.ng: High authority brandable (DA 30+, 50+ RD)
+- **Action Required:** Set up daily monitoring on ExpiredDomains.net
 
 ---
 
-*Dashboard updated: Sunday, March 22, 2026 - 2:47 AM WAT*
+**Next Heartbeat:** As scheduled
+**Next Trend Check:** As scheduled
+**Immediate Action:** Review expired domain opportunities report
+
+---
+
+*Dashboard updated: Sunday, March 22, 2026 - 3:02 AM WAT*
