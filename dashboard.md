@@ -116,10 +116,40 @@
 
 ---
 
-**Next Heartbeat:** As scheduled
-**Next Trend Check:** As scheduled
-**Immediate Action:** Review morning brief and research report
+### 📊 10:33 AM NIGERIA TRENDS CHECK:
+
+**Top 3 Trending Topics:**
+
+1. **🇳🇬 World Realtors Day (March 21) - Nigeria's First Celebration**
+   - **Source:** TVC News, real estate industry milestone
+   - **Engagement Targets:** Real estate professionals, property investors, developers
+   - **Comment Strategy:** Position as professional realtor, highlight expertise
+   - **Sample Post:** "Celebrating Nigeria's first World Realtors Day! Proud to help clients find verified properties in Abuja. Trust + Transparency = Happy Homeowners. #WorldRealtorsDay #NigeriaRealEstate #AbujaRealtor"
+
+2. **🏠 Nigeria's 22-28 Million Housing Deficit**
+   - **Source:** The Africanvestor, Statista Market Forecast
+   - **Key Insight:** Massive shortage driving demand in Lagos, Abuja, Port Harcourt
+   - **Engagement Targets:** Diaspora investors, first-time buyers, developers
+   - **Comment Strategy:** Scarcity = opportunity, position verified properties as solution
+   - **Sample Comment:** "With 22-28M housing deficit, verified land in Abuja is gold. Don't gamble with unverified plots. #HousingCrisis #AbujaRealEstate"
+
+3. **⚽ X/Twitter Nigeria Trends: Ozoro, Bournemouth, Amad, #BOUMUN**
+   - **Source:** Trends24.in (sports/entertainment focus)
+   - **Engagement Targets:** Young professionals, sports fans with disposable income
+   - **Comment Strategy:** Light engagement, don't force real estate angle
+   - **Action:** Monitor for real estate-related threads to join
+
+**Suggested Comment Targets for Next Hour:**
+- Real estate hashtags: #NigeriaRealEstate #AbujaProperty #WorldRealtorsDay
+- News comments on housing deficit articles
+- LinkedIn posts from Nigerian real estate professionals
 
 ---
 
-*Dashboard updated: Saturday, March 21, 2026 - 10:14 AM WAT*
+**Next Heartbeat:** As scheduled
+**Next Trend Check:** As scheduled
+**Immediate Action:** Post World Realtors Day content (expires today!)
+
+---
+
+*Dashboard updated: Saturday, March 21, 2026 - 10:33 AM WAT*
